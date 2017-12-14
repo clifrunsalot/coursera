@@ -34,5 +34,5 @@ print("")
 print("Integer expressions")
 print(4.5 // 2)
 print(4 // 6)
-print(4.5 // 2.1)
+print(4.5 // 2.2)
 
