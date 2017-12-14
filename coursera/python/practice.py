@@ -36,3 +36,49 @@ print(4.5 // 2)
 print(4 // 6)
 print(4.5 // 2.2)
 
+print("")
+
+# Strings
+print("Strings")
+print("Hello, world")
+print("This course is great!")
+print("'ello")
+print("[Hello]")
+print("Goodbye'")
+
+print("")
+
+# Expressions
+print("Expressions")
+#print(9 - (2-(4*3))
+print((7-2)/(3**2))
+#print(3 * ((2-9)+4))*(2+(1-3)))
+print(7/+4)
+print((8 + (1 + (2 * 4) - 3)))
+
+print("")
+
+print("Variables")
+number123 = 123
+print(number123)
+
+#my.number = 3
+#print(my.number)
+
+#16ounces = 16
+#print(16ounces)
+
+__numbers__ = 3
+print(__numbers__)
+
+oz_in_gram = 0.035274 
+mass_in_ounces = 35
+mass_in_grams = mass_in_ounces / oz_in_gram
+print(str(mass_in_grams) + " grams in " + str(mass_in_ounces) + " oz")
+
+ft_in_mile = 5280
+miles = 5
+total_ft = 5 * 5280
+print(str(total_ft) + " ft in " + str(miles) + " miles")
+
+
