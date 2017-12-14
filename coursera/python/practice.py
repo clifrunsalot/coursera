@@ -19,3 +19,20 @@ print(3.45 + 2.7)
 print(87.3384 - 12.35)
 print(3 + 6.7)
 print(9.8 - 4)
+
+print("")
+
+# Order of operations
+print("Order of operations")
+print(1 + 1)
+print(2 ** 2)
+print(2 + (2 ** 2))
+
+print("")
+
+# Integer expressions
+print("Integer expressions")
+print(4.5 // 2)
+print(4 // 6)
+print(4.5 // 2.1)
+
