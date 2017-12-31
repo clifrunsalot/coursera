@@ -187,6 +187,207 @@ print(name + " is cool: " + str(is_cool(name)))
 name = "John"
 print(name + " is cool: " + str(is_cool(name)))
 
+def is_lunchtime(hr, is_morning):
+	"""
+	Returns True if hr is either 11am to 12pm.
+    """
+	if is_morning and hr == 11:
+		return True
+	elif not is_morning and hr == 12:
+		return True
+	else:
+		return False
+	
+def is_lunchtime_test(hour, is_am):
+	"""
+	Tests the is_lunchtime function.
+	"""
+	print(hour, end = "")
+	if is_am:
+		print("AM", end = "")
+	else:
+		print("PM", end = "")
+	if is_lunchtime(hour, is_am):
+		print(" is lunchtime.")
+	else:
+		print(" is not lunchtime.")
+
+is_lunchtime_test(11,True)
+is_lunchtime_test(12,True)
+is_lunchtime_test(11,False)
+is_lunchtime_test(12,False)
+is_lunchtime_test(10, False)
+
+def is_leap_year(year):
+	"""
+	Returns True if year is a Leap Year.
+	"""
+	if year % 4 != 0:
+		return False
+	elif (year % 100) != 0:
+		return True
+	elif (year % 400) != 0:
+		return False
+	else:
+		return True
 
 
- 
+year = 2000
+print(str(year) + " is a leap year: " + str(is_leap_year(year)))
+year = 1996
+print(str(year) + " is a leap year: " + str(is_leap_year(year)))
+year = 1800
+print(str(year) + " is a leap year: " + str(is_leap_year(year)))
+year = 2013
+print(str(year) + " is a leap year: " + str(is_leap_year(year)))
+
+def interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper):
+	"""
+	Return true if int1 intersects with int2
+	"""
+	return int2_lower <= int1_upper and int1_lower <= int2_upper
+	
+int1_lower, int1_upper, int2_lower, int2_upper = 0, 1, 1, 2
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+int1_lower, int1_upper, int2_lower, int2_upper = 1, 2, 0, 1
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+int1_lower, int1_upper, int2_lower, int2_upper = 0, 1, 2, 3
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+int1_lower, int1_upper, int2_lower, int2_upper = 2, 3, 0, 1
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+int1_lower, int1_upper, int2_lower, int2_upper = 0, 3, 1, 2
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+int1_lower, int1_upper, int2_lower, int2_upper = 1, 3, 0, 2
+print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
+
+def print_digits(number):
+	if len(str(number)) == 2:
+		tens = str(number)[0]
+		ones = str(number)[1]
+		print("tenths=" + tens + ",ones=" + ones)
+	elif len(str(number)) == 1:
+		print("tenths=0" + ",ones=" + str(number))
+	else:
+		print("Error: Input in not a two-digit number")
+	
+print_digits(42)
+print_digits(99)
+print_digits(5)
+print_digits(459)
+
+print("#############")
+
+#
+# (b**2) - (4*a*c)
+#
+
+def smaller_root(coeff_a, coeff_b, coeff_c):
+	"""
+	Returns the value of the discriminant.
+	"""
+	discriminant = (coeff_b ** 2) - (4 * coeff_a * coeff_c)
+	if discriminant >= 0:
+		return discriminant
+	else:
+		return "Error: No real solutions"
+		
+
+coeff_a, coeff_b, coeff_c = 1,2,3
+print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
+	"x + " + str(coeff_c) + " is: ")
+print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+
+coeff_a, coeff_b, coeff_c = 2,0,-10
+print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
+	"x + " + str(coeff_c) + " is: ")
+print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+
+coeff_a, coeff_b, coeff_c = 6, -3, 5
+print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
+	"x + " + str(coeff_c) + " is: ")
+print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+
+print(True)
+print(False)
+print(1)
+
+print("#############")
+
+def myexpr(p, q):
+	"""
+	Returns true if the expression is true.
+	"""
+	return not (p or not q)
+	
+p = True
+q = True
+print(myexpr(p,q))
+
+p = True
+q = False
+print(myexpr(p,q))
+
+p = False
+q = True
+print(myexpr(p,q))
+
+p = False
+q = False
+print(myexpr(p,q))
+
+print("#############")
+
+def myexpr1(bool1, bool2):
+	"""
+	Returns true if true.
+	"""
+	if bool1:
+		if bool2:
+			return False
+		else:
+			return True
+	else:
+		return True
+
+bool1 = True
+bool2 = True
+print("=============")
+print("* " + str(myexpr1(bool1,bool2)))
+print("=============")
+print("1 " + str(bool1 and bool2))
+print("2 " + str(bool1 or bool2))
+print("3 " + str(not(bool1 and bool2)))
+print("4 " + str(not(bool1 or bool2)))
+bool1 = True
+bool2 = False
+print("=============")
+print("* " + str(myexpr1(bool1,bool2)))
+print("=============")
+print("1 " + str(bool1 and bool2))
+print("2 " + str(bool1 or bool2))
+print("3 " + str(not(bool1 and bool2)))
+print("4 " + str(not(bool1 or bool2)))
+bool1 = False
+bool2 = False
+print("=============")
+print("* " + str(myexpr1(bool1,bool2)))
+print("=============")
+print("1 " + str(bool1 and bool2))
+print("2 " + str(bool1 or bool2))
+print("3 " + str(not(bool1 and bool2)))
+print("4 " + str(not(bool1 or bool2)))
+bool1 = False
+bool2 = True
+print("=============")
+print("* " + str(myexpr1(bool1,bool2)))
+print("=============")
+print("1 " + str(bool1 and bool2))
+print("2 " + str(bool1 or bool2))
+print("3 " + str(not(bool1 and bool2)))
+print("4 " + str(not(bool1 or bool2)))
+
