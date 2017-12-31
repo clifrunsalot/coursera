@@ -391,3 +391,22 @@ print("2 " + str(bool1 or bool2))
 print("3 " + str(not(bool1 and bool2)))
 print("4 " + str(not(bool1 or bool2)))
 
+print("######################")
+def collatz(n):
+	val = 0;
+	if (n == 1):
+		print(val)
+		return
+	elif (n%2) == 0:
+		val = (n//2)
+		return (val)
+	else:
+		val = (3*n + 1)
+		return (val)
+
+# 12, 6, 3, 10, 5, 16, 8, 4, 2, 1
+print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(674))))))))
+
+#
+print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(1071)))))))))))))))
+
