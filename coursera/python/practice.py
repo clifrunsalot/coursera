@@ -139,3 +139,54 @@ print(EqTriArea(3))
 print(EqTriArea(4))
 print(EqTriArea(5))
 
+##########################
+
+def strComp(s1, s2):
+	if (s1 > s2):
+		return "after"
+	elif (s1 < s2):
+		return "before"
+	else:
+		return "equal"
+
+s1 = "A"
+s2 = "a"
+print(s1, "is ", strComp(s1,s2), s2)
+
+s1 = "a"
+s2 = "A"
+print(s1, "is ", strComp(s1,s2), s2)
+
+s1 = "a"
+s2 = "a"
+print(s1, "is ", strComp(s1,s2), s2)
+
+################ practical exercises ################
+
+def is_even(number):
+	return (number % 2) == 0
+	
+number = 5
+print(str(number) + " is even: " + str(is_even(number)))
+number = 2
+print(str(number) + " is even: " + str(is_even(number)))
+
+def is_cool(name):
+	"""
+	Returns True if name is either:
+	"Joe," "John," or "Stephen.
+	"""
+	return name in ["Joe", "John", "Stephen"]
+	
+name = "Stephen"
+print(name + " is cool: " + str(is_cool(name)))
+name = "Jack"
+print(name + " is cool: " + str(is_cool(name)))
+name = "Joe"
+print(name + " is cool: " + str(is_cool(name)))
+name = "John"
+print(name + " is cool: " + str(is_cool(name)))
+
+
+
+ 
