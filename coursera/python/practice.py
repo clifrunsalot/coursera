@@ -410,3 +410,5 @@ print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(674))))))))
 #
 print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(1071)))))))))))))))
 
+################ Week 4 #####################
+
