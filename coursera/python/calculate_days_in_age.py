@@ -14,7 +14,7 @@ def days_in_month(year, month):
     Returns:
       The number of days in the input month.
     """
-    # Save month attributes.
+    # Save month attributes because calculations are based on it.
     selected_date = datetime.date(year, month, 1)
 
     # Use the day attribute of the datetime.date object
@@ -27,7 +27,8 @@ def days_in_month(year, month):
         # subtracting the first day of the following month to get the
         # last day of the selected month.
         # This doesn't work for December because we have to know the
-        # year of the previous month.
+        # year of the previous month. The timedelta has builtin logic
+        # to make this easy.
         month_after_selected_month = datetime.date(
             selected_date.year, 
             selected_date.month + 1, 
@@ -71,7 +72,7 @@ def days_between(year1, month1, day1, year2, month2, day2):
       before the first date.
     """
 
-    # Valid both dates and then ensure that date1 is before date2.
+    # Validate the inputs and ensure date1 is before date2.
     if is_valid_date(year1, month1, day1):
         if is_valid_date(year2, month2, day2):
             date_1 = datetime.date(year1, month1, day1)
@@ -94,7 +95,6 @@ def age_in_days(year, month, day):
       date is in the future.
     """
     
-    birth_date = datetime.date(year, month, day)
     if is_valid_date(year, month, day):
         today = datetime.date.today()
         return days_between(year, 
@@ -261,6 +261,12 @@ print("Days since birthdate "
         + str(age_in_days(birth_date.year, birth_date.month, birth_date.day)))
 
 birth_date = datetime.date(2018, 1, 8)
+bdate = str(birth_date.year) + "-" + str(birth_date.month) + "-" + str(birth_date.day)
+print("Days since birthdate " 
+        + bdate + ": " 
+        + str(age_in_days(birth_date.year, birth_date.month, birth_date.day)))
+
+birth_date = datetime.date(0, 8, 21)
 bdate = str(birth_date.year) + "-" + str(birth_date.month) + "-" + str(birth_date.day)
 print("Days since birthdate " 
         + bdate + ": " 
