@@ -2,65 +2,95 @@
 Demonstration of simple arithmetic expression in Python.
 """
 
-# Unary + and -
-print("Unary operators")
-print(+3)
-print(-5)
-print(+7.86)
-print(-3348.63)
+def add_break_and_title(title):
+    print()
+    print("************ " + title + " *************")
 
-print("")
+add_break_and_title("Simple unary operators")
+def unary_example():
+    """
+    Simple unary operators.
+    """
+    print(+3)
+    print(-5)
+    print(+7.86)
+    print(-3348.63)
+unary_example()
 
-# Simple arithmetic
-print("Addition and Subtraction")
-print(1 + 2)
-print(48 - 89)
-print(3.45 + 2.7)
-print(87.3384 - 12.35)
-print(3 + 6.7)
-print(9.8 - 4)
+add_break_and_title("Simple arithmetic")
+def add_minus():
+    """
+    Simple add and subtract.
+    """
+    print(1 + 2)
+    print(48 - 89)
+    print(3.45 + 2.7)
+    print(87.3384 - 12.35)
+    print(3 + 6.7)
+    print(9.8 - 4)
+add_minus()
 
-print("")
+add_break_and_title("add_minus")
+add_minus()
 
-# Order of operations
-print("Order of operations")
-print(1 + 1)
-print(2 ** 2)
-print(2 + (2 ** 2))
+def order_of_operations():
+    """
+    Simple operator precedence.
+    """
+    print("Order of operations")
+    print(1 + 1)
+    print(2 ** 2)
+    print(2 + (2 ** 2))
 
-print("")
+add_break_and_title("Order of operations")
+order_of_operations()
 
-# Integer expressions
-print("Integer expressions")
-print(4.5 // 2)
-print(4 // 6)
-print(4.5 // 2.2)
+def integer_expressions():
+    """
+    Simple integer expressions.
+    """
+    print("Integer expressions")
+    print(4.5 // 2)
+    print(4 // 6)
+    print(4.5 // 2.2)
+    
+add_break_and_title("Integer expressions")
+integer_expressions()
 
-print("")
+def simple_strings():
+    """
+    Simple string expressions.
+    """
+    print("Strings")
+    print("Hello, world")
+    print("This course is great!")
+    print("'ello")
+    print("[Hello]")
+    print("Goodbye'")
 
-# Strings
-print("Strings")
-print("Hello, world")
-print("This course is great!")
-print("'ello")
-print("[Hello]")
-print("Goodbye'")
+add_break_and_title("String expressions")
+simple_strings()
 
-print("")
+def simple_math_expressions():
+    """
+    Simple math expressions.
+    """
+    print((7-2)/(3**2))
+    print(7/+4)
+    print((8 + (1 + (2 * 4) - 3)))
+    
+add_break_and_title("Simple math expressions")
+simple_math_expressions()
 
-# Expressions
-print("Expressions")
-#print(9 - (2-(4*3))
-print((7-2)/(3**2))
-#print(3 * ((2-9)+4))*(2+(1-3)))
-print(7/+4)
-print((8 + (1 + (2 * 4) - 3)))
-
-print("")
-
-print("Variables")
-number123 = 123
-print(number123)
+def variables():
+    """
+    Simple variables.
+    """
+    number123 = 123
+    print(number123)
+    
+add_break_and_title("Simple variables")
+variables()
 
 #my.number = 3
 #print(my.number)
@@ -468,3 +498,21 @@ print(EqTriArea(3))
 print(EqTriArea(4))
 print(EqTriArea(5))
 
+def slice_string_example():
+    """
+    Simple string slicing exercises.
+    """
+    word = "everything"
+    
+    print("word = everything")
+    print("word[1:5]              => " + word[1:5])
+    print("word[5:9]              => " + word[5:9])
+    print("word[5:]               => " + word[5:])
+    print("word[:4]               => " + word[:4])
+    print("word[-3:]              => " + word[-3:])
+    print("word[2:-3]             => " + word[2:-3])
+    print("word[8:20]             => " + word[8:20])
+    print("$ + word[22:29] + \"^\"  => " + "$" + word[22:29] + "^")
+    
+add_break_and_title("slice_string_example")
+slice_string_example()
