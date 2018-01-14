@@ -490,13 +490,19 @@ print("$500 at 4% compounded 10 times per year for 10 years yields $", future_va
 ########################
 
 def EqTriArea(side):
-  return ((3**0.5) / 4) * (side**2)
-  
-print(EqTriArea(1))
-print(EqTriArea(2))
-print(EqTriArea(3))
-print(EqTriArea(4))
-print(EqTriArea(5))
+    """
+    Takes the length of one side of
+    equilateral triangle and returns
+    the area.
+    """
+    return ((3**0.5) / 4) * (side**2)
+    
+add_break_and_title("EqTriArea exercise")
+print("EqTriArea(1)     => " + str(EqTriArea(1)))
+print("EqTriArea(2)     => " + str(EqTriArea(2)))
+print("EqTriArea(3)     => " + str(EqTriArea(3)))
+print("EqTriArea(4)     => " + str(EqTriArea(4)))
+print("EqTriArea(5)     => " + str(EqTriArea(5)))
 
 def slice_string_example():
     """
@@ -505,14 +511,196 @@ def slice_string_example():
     word = "everything"
     
     print("word = everything")
+    print("substrings")
     print("word[1:5]              => " + word[1:5])
     print("word[5:9]              => " + word[5:9])
+    print("open ended slices")
     print("word[5:]               => " + word[5:])
     print("word[:4]               => " + word[:4])
+    print("negative indices")
     print("word[-3:]              => " + word[-3:])
     print("word[2:-3]             => " + word[2:-3])
+    print("indexing past the end")
     print("word[8:20]             => " + word[8:20])
     print("$ + word[22:29] + \"^\"  => " + "$" + word[22:29] + "^")
+    print("empty slices")
+    print("word[6:6]              => " + word[6:6])
+    print("word[4:2]              => " + word[4:2])
     
 add_break_and_title("slice_string_example")
 slice_string_example()
+
+def format_specifiers(name, age):
+    """
+    Simple format examples.
+    """
+    last_yr = age-1
+    print("{0} is {1} years old, but {0} was {2} years old last year".format(name, age, last_yr))
+    
+add_break_and_title("format_specifiers")
+format_specifiers("clif",52)
+
+def fix_strings():
+    """
+    Fix the four strings below.
+    """
+    string1 = "It's just a flesh wound"
+    string2 = "'It's just a flesh wound'"
+    string3 = "\"It's just a flesh wound\""
+    string4 = "\"\"It's just a flesh wound"
+    
+    print(string1)
+    print(string2)
+    print(string3)
+    print(string4)
+
+add_break_and_title("fix_strings")
+fix_strings()
+
+def get_first_last_characters(str1):
+    """
+    Returns the first and last characters of str.
+    """
+    return str1[0] + str1[-1]
+    
+add_break_and_title("get_first_last_characters")
+print(get_first_last_characters("Hello"))
+print(get_first_last_characters("Melly"))
+
+def get_middle_characters(str1):
+    """
+    Returns all characters minus the first and last characters.
+    """
+    return str1[1:-1]
+
+add_break_and_title("get_middle_characters")
+print(get_middle_characters("annabelle"))
+print(get_middle_characters("jacksonpollack"))
+
+def get_threes(str1):
+    """
+    Returns a string composed of the first three and last three
+    characters of the str.
+    """
+    first_3 = str1[:3]
+    last_3 = str1[-3:]
+    return first_3 + last_3
+    
+add_break_and_title("get_threes")
+print(get_threes("Where in the world is Carmen San Diego"))
+print(get_threes("Peter piper picked a peck of pickles"))
+
+def echo_and_repeat(str1, nbr):
+    """
+    Returns the value of str1 repeated nbr times.
+    """
+    return (str1 + "\n") * nbr
+
+add_break_and_title("echo and repeat")
+print(echo_and_repeat("Why",3))
+print(echo_and_repeat("Because",3))
+
+def is_substring(example_string, test_string):
+    """
+    Returns True if test_string is a substring of example_string.
+    """
+    return example_string.find(test_string) > -1
+
+add_break_and_title("is_substring")    
+outside_str = "Winebago"
+inside_str = "eb"
+print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
+
+outside_str = "Winebago"
+inside_str = "xx"
+print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
+
+outside_str = "Winebago"
+inside_str = "o"
+print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
+
+outside_str = "Winebago"
+inside_str = "w"
+print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
+
+outside_str = "Winebago"
+inside_str = "W"
+print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
+
+def make_nametag(name, topic):
+    """
+    Returns a string where XXX is replaced by name
+    and YYY is replaced by YYY.
+    """
+    return "Hi! My name is {0}. This lecture covers {1}".format(name, topic)
+    
+add_break_and_title("make_nametag")
+print(make_nametag("clif","python"))
+print(make_nametag("george","monkeying around"))
+
+def make_int(int_string):
+    """
+    Returns the value of int_string if it is a non-negative integer
+    or -1 if not.
+    """
+    if int_string.isdigit():
+        return int(int_string)
+    else:
+        return -1
+    
+add_break_and_title("make_int")
+int_string = "123"
+print(int_string + " contains an integer: " + str(make_int(int_string)))
+
+int_string = "00123"
+print(int_string + " contains an integer: " + str(make_int(int_string)))
+
+int_string = "12.3"
+print(int_string + " contains an integer: " + str(make_int(int_string)))
+
+int_string = "-123"
+print(int_string + " contains an integer: " + str(make_int(int_string)))
+
+def name_swap(name_string):
+    """
+    Returns name_string in the form of first name as Last First.
+    """
+    spacer = name_string.find(" ")
+    first = name_string[:spacer]
+    last = name_string[spacer+1:]
+    return (last + " " + first).title()
+    
+add_break_and_title("name_swap")
+print(name_swap("clif hudson"))
+
+def count_vowels(word):
+    """
+    Returns the number of occurrences of lowercase vowels.
+    """
+    total = 0
+    for ch in ("a","e","i","o","u"):
+        total += word.count(ch.lower())
+        
+    return total
+    
+add_break_and_title("count_vowels")
+word_ = "aaassseefffgggiiijjjoOOkkkuuuu"
+print(word_ + " has " + str(count_vowels(word_)) + " lowercase vowels.")
+
+word_ = "aovvouOucvicllOveeOlclOeuvvauouuvciOlsle"
+print(word_ + " has " + str(count_vowels(word_)) + " lowercase vowels.")
+
+def demystify(l1_string):
+    """
+    Returns a string where l is replaced by a and 1 is replaced by b.
+    """
+    return l1_string.replace("l","a").replace("1","b")
+    
+add_break_and_title("demystify")
+word_ = "lll111l1l1l1111lll"
+print(demystify(word_))
+
+word_ = "111l1l11l11lll1lll1lll11111ll11l1ll1l111"
+print(demystify(word_))
+
+
