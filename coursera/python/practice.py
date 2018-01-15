@@ -92,56 +92,92 @@ def variables():
 add_break_and_title("Simple variables")
 variables()
 
-#my.number = 3
-#print(my.number)
+def convert_oz_to_grams(ounces):
+    """
+    Returns ounces converted to grams.
+    """
+    oz_in_gram = 0.035274 
+    mass_in_grams = ounces / oz_in_gram
+    return mass_in_grams
+    
+add_break_and_title("convert grams to oz")
+mass_in_oz = 35
+print("There are " + str(mass_in_oz) + "oz in " + str(convert_oz_to_grams(mass_in_oz)) + " grams")
+    
+def convert_ft_to_miles(ft):
+    """
+    Returns feet converted to miles.
+    """
+    ft_per_mile = 5280
+    return ft / 5280
 
-#16ounces = 16
-#print(16ounces)
+add_break_and_title("convert to ft to miles")
+ft = 10000
+print("There are " + str(ft) + "ft in " + str(convert_ft_to_miles(ft)) + " miles")
 
-__numbers__ = 3
-print(__numbers__)
+ft = 5280
+print("There are " + str(ft) + "ft in " + str(convert_ft_to_miles(ft)) + " miles")
 
-oz_in_gram = 0.035274 
-mass_in_ounces = 35
-mass_in_grams = mass_in_ounces / oz_in_gram
-print(str(mass_in_grams) + " grams in " + str(mass_in_ounces) + " oz")
-
-ft_in_mile = 5280
-miles = 5
-total_ft = 5 * 5280
-print(str(total_ft) + " ft in " + str(miles) + " miles")
-
-############# quiz practice ##############
-
+def convert_miles_to_ft(miles):
+    """
+    Returns miles converted to feet.
+    """
+    ft_per_mile = 5280
+    return miles * ft_per_mile
+    
+add_break_and_title("convert miles to ft")
+miles = 10
+print("There are " + str(10) + " miles in " + str(convert_miles_to_ft(miles)) + " ft")
+    
 def max_of_2(val1, val2):
+    """
+    Returns the max of val1 and val2
+    """
     if val1 > val2:
         return val1
     else:
         return val2
 
 def max_of_3(val1, val2, val3):
+    """
+    Returns the max of val1, val2, and val3.
+    """
     return max_of_2(val1, max_of_2(val2, val3))
+
+add_break_and_title("find max value out of three")
+v1 = 345
+v2 = 123
+v3 = 7
+print("The max value between " 
+        + str(v1) + ", " + str(v2) + ", " + str(v3) + " is " 
+        + str(max_of_3(v1, v2, v3)))
 
 #########################
 
 def project_to_distance(point_x, point_y, distance):
+    """
+    Returns the projection of x,y based on distance.
+    """
     dist_to_origin = (point_x ** 2 + point_y ** 2) ** 0.5
     scale = distance / dist_to_origin
     print(point_x * scale, point_y * scale)
 
-project_to_distance(2, 7, 4)
-
-#########################
-
-def funcX(val):
-  return (-5*(val**5)) + (67*(val**2)) - 47
-  
-print(funcX(0))
-print(funcX(1))
-print(funcX(2))
-print(funcX(3))
-
-##########################
+add_break_and_title("project_to_distance")
+x = 2
+y = 7
+dist = 4
+print("x, y, dist: " + str(x) 
+                + ", " + str(y) 
+                + ", " + str(dist) + " projects to ") 
+project_to_distance(x, y, dist)
+                
+x = 1
+y = 1
+dist = 4
+print("x, y, dist: " + str(x) 
+                + ", " + str(y) 
+                + ", " + str(dist) + " projects to ") 
+project_to_distance(x, y, dist)
 
 def future_value(present_value, annual_rate, periods_per_year, years):
     """
@@ -154,68 +190,63 @@ def future_value(present_value, annual_rate, periods_per_year, years):
     # Put your code here.
     return (present_value * ((1 + rate_per_period) ** periods))
     
-
+add_break_and_title("Calculate future value based on rate over years")
 print("$1000 at 2% compounded daily for 4 years yields $", future_value(1000, .02, 365, 4))
 print("$500 at 4% compounded 10 times per year for 10 years yields $", future_value(500, .04, 10, 10))
 
-########################
-
 def EqTriArea(side):
-  return ((3**0.5) / 4) * (side**2)
-  
-print(EqTriArea(1))
-print(EqTriArea(2))
-print(EqTriArea(3))
-print(EqTriArea(4))
-print(EqTriArea(5))
+    """
+    Returns the area of an equilateral triangle based on length side."
+    """
+    return ((3**0.5) / 4) * (side**2)
 
-##########################
+add_break_and_title("Calculate the area of an equilateral triangle of lengthe side.")
+side = 1
+print("The area of equilateral triangle with side length of " + str(side) + ": " + str(EqTriArea(side)))
+side = 2
+print("The area of equilateral triangle with side length of " + str(side) + ": " + str(EqTriArea(side)))
+side = 3
+print("The area of equilateral triangle with side length of " + str(side) + ": " + str(EqTriArea(side)))
+side = 4
+print("The area of equilateral triangle with side length of " + str(side) + ": " + str(EqTriArea(side)))
 
 def strComp(s1, s2):
-	if (s1 > s2):
-		return "after"
-	elif (s1 < s2):
-		return "before"
-	else:
-		return "equal"
+    """
+    Returns 'after' if s1 < s2 or
+    'before' if s1 > s2 or
+    'equals' if s1 == s2.
+    """
+    if (s1 > s2):
+        return "after"
+    elif (s1 < s2):
+        return "before"
+    else:
+        return "equal"
 
+add_break_and_title("Relational comparison of strings.")
 s1 = "A"
 s2 = "a"
-print(s1, "is ", strComp(s1,s2), s2)
+print(s1 + " is " + strComp(s1,s2) + " " + s2)
 
 s1 = "a"
 s2 = "A"
-print(s1, "is ", strComp(s1,s2), s2)
+print(s1 + " is " + strComp(s1,s2) + " " + s2)
 
 s1 = "a"
 s2 = "a"
-print(s1, "is ", strComp(s1,s2), s2)
-
-################ practical exercises ################
+print(s1 + " is " + strComp(s1,s2) + " " + s2)
 
 def is_even(number):
-	return (number % 2) == 0
+    """
+    Returns true if number is even.
+    """
+    return (number % 2) == 0
 	
+add_break_and_title("Check if number is even")
 number = 5
 print(str(number) + " is even: " + str(is_even(number)))
 number = 2
 print(str(number) + " is even: " + str(is_even(number)))
-
-def is_cool(name):
-	"""
-	Returns True if name is either:
-	"Joe," "John," or "Stephen.
-	"""
-	return name in ["Joe", "John", "Stephen"]
-	
-name = "Stephen"
-print(name + " is cool: " + str(is_cool(name)))
-name = "Jack"
-print(name + " is cool: " + str(is_cool(name)))
-name = "Joe"
-print(name + " is cool: " + str(is_cool(name)))
-name = "John"
-print(name + " is cool: " + str(is_cool(name)))
 
 def is_lunchtime(hr, is_morning):
 	"""
@@ -242,6 +273,7 @@ def is_lunchtime_test(hour, is_am):
 	else:
 		print(" is not lunchtime.")
 
+add_break_and_title("Check if hour is lunchtime")
 is_lunchtime_test(11,True)
 is_lunchtime_test(12,True)
 is_lunchtime_test(11,False)
@@ -261,7 +293,7 @@ def is_leap_year(year):
 	else:
 		return True
 
-
+add_break_and_title("Check if year is a leap year")
 year = 2000
 print(str(year) + " is a leap year: " + str(is_leap_year(year)))
 year = 1996
@@ -497,7 +529,7 @@ def EqTriArea(side):
     """
     return ((3**0.5) / 4) * (side**2)
     
-add_break_and_title("EqTriArea exercise")
+add_break_and_title("Get area of equilateral tria")
 print("EqTriArea(1)     => " + str(EqTriArea(1)))
 print("EqTriArea(2)     => " + str(EqTriArea(2)))
 print("EqTriArea(3)     => " + str(EqTriArea(3)))
