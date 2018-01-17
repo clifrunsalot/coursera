@@ -328,15 +328,19 @@ int1_lower, int1_upper, int2_lower, int2_upper = 1, 3, 0, 2
 print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
 
 def print_digits(number):
-	if len(str(number)) == 2:
-		tens = str(number)[0]
-		ones = str(number)[1]
-		print("tenths=" + tens + ",ones=" + ones)
-	elif len(str(number)) == 1:
-		print("tenths=0" + ",ones=" + str(number))
-	else:
-		print("Error: Input in not a two-digit number")
-	
+    """
+    Prints the ones and tens digits if number is a digit.
+    """
+    if len(str(number)) == 2:
+        tens = str(number)[0]
+        ones = str(number)[1]
+        print("tenths=" + tens + ",ones=" + ones)
+    elif len(str(number)) == 1:
+        print("tenths=0" + ",ones=" + str(number))
+    else:
+        print("Error: Input in not a two-digit number")
+
+add_break_and_title("print_digits")
 print_digits(42)
 print_digits(99)
 print_digits(5)
@@ -344,197 +348,54 @@ print_digits(459)
 
 print("#############")
 
-#
-# (b**2) - (4*a*c)
-#
-
-def smaller_root(coeff_a, coeff_b, coeff_c):
-	"""
+def get_discriminant(coeff_a, coeff_b, coeff_c):
+    """
 	Returns the value of the discriminant.
-	"""
-	discriminant = (coeff_b ** 2) - (4 * coeff_a * coeff_c)
-	if discriminant >= 0:
-		return discriminant
-	else:
-		return "Error: No real solutions"
-		
+    
+    (b**2) - (4*a*c)
+    
+    """
+    discriminant = (coeff_b ** 2) - (4 * coeff_a * coeff_c)
+    if discriminant >= 0:
+        return discriminant
+    else:
+        return "Error: No real solutions"
 
+add_break_and_title("get_discriminant")
 coeff_a, coeff_b, coeff_c = 1,2,3
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
 	"x + " + str(coeff_c) + " is: ")
-print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
 coeff_a, coeff_b, coeff_c = 2,0,-10
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
 	"x + " + str(coeff_c) + " is: ")
-print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
 coeff_a, coeff_b, coeff_c = 6, -3, 5
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
 	"x + " + str(coeff_c) + " is: ")
-print(str(smaller_root(coeff_a, coeff_b, coeff_c)))
+print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
-print(True)
-print(False)
-print(1)
-
-print("#############")
-
-def myexpr(p, q):
-	"""
-	Returns true if the expression is true.
-	"""
-	return not (p or not q)
-	
-p = True
-q = True
-print(myexpr(p,q))
-
-p = True
-q = False
-print(myexpr(p,q))
-
-p = False
-q = True
-print(myexpr(p,q))
-
-p = False
-q = False
-print(myexpr(p,q))
-
-print("#############")
-
-def myexpr1(bool1, bool2):
-	"""
-	Returns true if true.
-	"""
-	if bool1:
-		if bool2:
-			return False
-		else:
-			return True
-	else:
-		return True
-
-bool1 = True
-bool2 = True
-print("=============")
-print("* " + str(myexpr1(bool1,bool2)))
-print("=============")
-print("1 " + str(bool1 and bool2))
-print("2 " + str(bool1 or bool2))
-print("3 " + str(not(bool1 and bool2)))
-print("4 " + str(not(bool1 or bool2)))
-bool1 = True
-bool2 = False
-print("=============")
-print("* " + str(myexpr1(bool1,bool2)))
-print("=============")
-print("1 " + str(bool1 and bool2))
-print("2 " + str(bool1 or bool2))
-print("3 " + str(not(bool1 and bool2)))
-print("4 " + str(not(bool1 or bool2)))
-bool1 = False
-bool2 = False
-print("=============")
-print("* " + str(myexpr1(bool1,bool2)))
-print("=============")
-print("1 " + str(bool1 and bool2))
-print("2 " + str(bool1 or bool2))
-print("3 " + str(not(bool1 and bool2)))
-print("4 " + str(not(bool1 or bool2)))
-bool1 = False
-bool2 = True
-print("=============")
-print("* " + str(myexpr1(bool1,bool2)))
-print("=============")
-print("1 " + str(bool1 and bool2))
-print("2 " + str(bool1 or bool2))
-print("3 " + str(not(bool1 and bool2)))
-print("4 " + str(not(bool1 or bool2)))
-
-print("######################")
 def collatz(n):
-	val = 0;
-	if (n == 1):
-		print(val)
-		return
-	elif (n%2) == 0:
-		val = (n//2)
-		return (val)
-	else:
-		val = (3*n + 1)
-		return (val)
+    """
+    Returns f(n) based on the Collatz algorithm.
+    """
+    val = 0;
+    if (n == 1):
+        print(val)
+        return
+    elif (n%2) == 0:
+        val = (n//2)
+        return (val)
+    else:
+        val = (3*n + 1)
+        return (val)
 
+add_break_and_title("collatz")
 # 12, 6, 3, 10, 5, 16, 8, 4, 2, 1
 print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(674))))))))
-
-#
 print(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(collatz(1071)))))))))))))))
-
-################ Week 4 #####################
-
-def max_of_2(val1, val2):
-    if val1 > val2:
-        return val1
-    else:
-        return val2
-
-def max_of_3(val1, val2, val3):
-    return max_of_2(val1, max_of_2(val2, val3))
-
-#########################
-
-def project_to_distance(point_x, point_y, distance):
-    dist_to_origin = (point_x ** 2 + point_y ** 2) ** 0.5
-    scale = distance / dist_to_origin
-    print(point_x * scale, point_y * scale)
-
-project_to_distance(2, 7, 4)
-
-#########################
-
-def funcX(val):
-  return (-5*(val**5)) + (67*(val**2)) - 47
-  
-print(funcX(0))
-print(funcX(1))
-print(funcX(2))
-print(funcX(3))
-
-##########################
-
-def future_value(present_value, annual_rate, periods_per_year, years):
-    """
-    Input: the numbers present_value, annual_rate, periods_per_year, years
-    Output: future value based on formula given in question
-    """
-    rate_per_period = annual_rate / periods_per_year
-    periods = periods_per_year * years
-
-    # Put your code here.
-    return (present_value * ((1 + rate_per_period) ** periods))
-    
-
-print("$1000 at 2% compounded daily for 4 years yields $", future_value(1000, .02, 365, 4))
-print("$500 at 4% compounded 10 times per year for 10 years yields $", future_value(500, .04, 10, 10))
-
-########################
-
-def EqTriArea(side):
-    """
-    Takes the length of one side of
-    equilateral triangle and returns
-    the area.
-    """
-    return ((3**0.5) / 4) * (side**2)
-    
-add_break_and_title("Get area of equilateral tria")
-print("EqTriArea(1)     => " + str(EqTriArea(1)))
-print("EqTriArea(2)     => " + str(EqTriArea(2)))
-print("EqTriArea(3)     => " + str(EqTriArea(3)))
-print("EqTriArea(4)     => " + str(EqTriArea(4)))
-print("EqTriArea(5)     => " + str(EqTriArea(5)))
 
 def slice_string_example():
     """
