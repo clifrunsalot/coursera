@@ -596,4 +596,150 @@ print(demystify(word_))
 word_ = "111l1l11l11lll1lll1lll11111ll11l1ll1l111"
 print(demystify(word_))
 
+primes = [2, 3, 5, 7, 11, 13, 17]
+def show_prime_indices(primes):
+    """
+    Display visual between list of primes and their
+    corresponding indices.
+    """
+    print("List of primes and their indices")
+    str_list = []
+    for p in primes:
+        str_list.append(str(p) + " [" + str(len(str_list)) + "]") 
+    return str_list
+    
+add_break_and_title("show_prime_indices")
+print(show_prime_indices(primes))
 
+def get_primes(primes, count):
+    """
+    Returns a list of primes up to the count specified.
+    """
+    print("Primes up to index " + str(count) + ": " + str(primes[:count]))
+    return primes[:count]
+    
+def get_primes_in_list(primes, idx_list):
+    """
+    Returns the prime numbers in the primes list at the indices in idx_list.
+    """
+    print("Primes at indices " + str(idx_list))
+    ret_list = []
+    for itm in idx_list:
+        ret_list.append(primes[itm])
+    return ret_list
+
+add_break_and_title("get_primes")
+print(primes)
+count = 0
+idx_list = [0]
+print(show_prime_indices(primes))
+print(get_primes(primes, count))
+print(get_primes_in_list(primes, idx_list))
+
+count = 2
+idx_list = [1,2]
+print(show_prime_indices(primes))
+print(get_primes(primes, count))
+print(get_primes_in_list(primes, idx_list))
+
+count = 5
+idx_list = [1,3,5]
+print(show_prime_indices(primes))
+print(get_primes(primes, count))
+print(get_primes_in_list(primes, idx_list))
+
+def combine_first_last(lst):
+    """
+    Returns a list that contains the first and last elements of lst.
+    """
+    print("List: " + str(lst))
+    ret_val = []
+    ret_val.append(lst[0])
+    ret_val.append(lst[-1])
+    return ret_val
+    
+add_break_and_title("combine_first_last")
+example_list = [2, 3, 5, 7, 11, 13]
+print(combine_first_last(example_list))
+
+example_list = [3, 5, 7, 11]
+print(combine_first_last(example_list))
+
+example_list = [5, 7]
+print(combine_first_last(example_list))
+
+example_list = [5]
+print(combine_first_last(example_list))
+
+def true_false_list():
+    """
+    Returns list of 16 elements where the first 8 are True
+    and the last 8 are False.
+    """
+    lst = 8 * [True] + 8 * [False]
+    return lst
+    
+add_break_and_title("true_false_list")
+print(true_false_list())
+
+def split_words_into_list(wrd):
+    """
+    Splits wrd into a list of words. Assume there is a space between words.
+    """
+    print("Words to split: " + wrd)
+    return wrd.split(" ")
+    
+add_break_and_title("split_words_into_list")
+print(split_words_into_list("hello my name is george."))
+
+def word_count(txt, wrd):
+    """
+    Returns the count of wrd in txt.
+    """
+    print("Text: " + txt)
+    print("Word to find: " + wrd)
+    wrds = txt.split(" ")
+    return wrds.count(wrd)
+    
+add_break_and_title("word_count")
+find_str = "pigdog"
+print(word_count("this pigdog is a fine pigdog", find_str))
+find_str = "dog"
+print(word_count("this pigdog is not a dog", find_str))
+find_str = "pigdog"
+print(word_count("this pigdog is not a pig", find_str))
+
+def strange_sum(numbers):
+    """
+    Returns the sum of the values in numbers that are not divisible by 3.
+    """
+    print("Numbers: " + str(numbers))
+    total = 0
+    for n in numbers:
+        if n % 3:
+            total += n
+    return total
+    
+add_break_and_title("strange_sum")
+numbers = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+print(strange_sum(numbers))
+numbers = list(range(123)) + list(range(77))
+print(strange_sum(numbers))
+
+def n_relation_to_m(n, m):
+    """
+    Returns len of range based on values of n and m.
+    """
+    my_list = list(range(1,n))
+    final_list = my_list * m
+    return len(final_list)
+
+add_break_and_title("n_relation_to_m")
+
+lens_ = []
+for n in list(range(6)):
+    for m in list(range(6)):
+        val = str(n) + "," + str(m) + "," + str(n_relation_to_m(n, m))
+        lens_.append(val)
+
+print("\n".join(lens_))
