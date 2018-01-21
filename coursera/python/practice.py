@@ -739,7 +739,15 @@ add_break_and_title("n_relation_to_m")
 lens_ = []
 for n in list(range(6)):
     for m in list(range(6)):
-        val = str(n) + "," + str(m) + "," + str(n_relation_to_m(n, m))
+        result = n_relation_to_m(n,m)
+        val = "{:>5} {:>5} {:>5} {:>5}".format(n,m,result,m*(n-1))
         lens_.append(val)
 
+print('my_list = list(range(1,n))')
+print('final_list = my_list * m')
+print('len(final_list)')
+
+print("{:>5} {:>5} {:>5} {:>5}".format("n", "m", "len",'m*(n-1)'))
 print("\n".join(lens_))
+
+
