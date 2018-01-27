@@ -1,6 +1,7 @@
 """
 Demonstration of simple arithmetic expression in Python.
 """
+import random
 
 def add_break_and_title(title):
     print()
@@ -771,4 +772,174 @@ def convert_to_list(tup):
 add_break_and_title("convert_to_list")
 tup1 = (5,6,7,8,9)
 print("Converted to list: " + str(convert_to_list(tup1)))
+
+def change_list_value(lst, idx, new_val):
+    """
+    Updates the value of lst at the idx.
+    """
+    print("Original list: " + str(lst))
+    print("Set idx " + str(idx) + " to " + str(new_val))
+    lst[idx] = new_val
+    return lst
+    
+add_break_and_title("change_list_value")
+lst = [1,2,3,4,5]
+idx = 3
+new_val = 0
+print("Updated list: " + str(change_list_value(lst, idx, new_val)))
+
+def change_list_with_slice(lst, fromIdx, toIdx, new_val):
+    """
+    Updates the list lst at indices fromIdx, toIdx with new_val.
+    """
+    print("Original list: " + str(lst))
+    print("Slice to use: '" + str(fromIdx) + ":" + str(toIdx) + "'")
+    print("with this value: " + str(new_val))
+    lst[fromIdx:toIdx] = new_val
+    return lst
+
+add_break_and_title("change_list_with_slice")
+lst = [2, 3, 5, 7, 11, 13]
+fromIdx = 1
+toIdx = 2
+new_val = [0,0,0]
+print("Updated list: " + str(change_list_with_slice(lst, fromIdx, toIdx, new_val)))
+
+def copy_list_and_append(lst, new_val):
+    """
+    Copies the list lst and appends new_val.
+    """
+    print("Original list: " + str(lst))
+    print("append this value: " + str(new_val))
+    print("lst.append(new_val)")
+    lst.append(new_val)
+    return lst
+
+add_break_and_title("copy_list_and_append")
+lst = [2, 3, 5, 7, 11, 13]
+new_val = 0
+print("Updated list: " + str(copy_list_and_append(lst, new_val)))
+
+def copy_list_and_extend(lst1, new_val):
+    """
+    Copies list and extends copy.
+    """
+    print("Original list1: " + str(lst1))
+    print("Values to add to copy of list: " + str(new_val))
+    lst2 = list(lst1)
+    print("lst2.extend(new_val)")
+    lst2.extend(new_val)
+    return lst2
+
+add_break_and_title("copy_list_and_extend")
+lst = [2, 3, 5, 7, 11, 13]
+new_val = [0, 0, 0]
+lst2 = copy_list_and_extend(lst, new_val)
+print("New list: " + str(lst2))
+
+def copy_list_and_concatenate(lst1, new_val):
+    """
+    Copies list and concatenate copy.
+    """
+    print("Original list1: " + str(lst1))
+    print("Values to add to copy of list: " + str(new_val))
+    lst2 = list(lst1)
+    print("lst2 = lst2 + new_val")
+    lst2 = lst2 + new_val
+    return lst2
+
+add_break_and_title("copy_list_and_concatenate")
+lst = [2, 3, 5, 7, 11, 13]
+new_val = [0, 0, 0]
+lst2 = copy_list_and_concatenate(lst, new_val)
+print("New list: " + str(lst2))
+
+def copy_list_and_append_with_loop(lst1, new_val):
+    """
+    Copies list and appends new_val with loop.
+    """
+    print("Original list1: " + str(lst1))
+    print("Values to add to copy of list: " + str(new_val))
+    lst2 = list(lst1)
+    for i in new_val:
+        lst2.append(i)
+    return lst2
+
+add_break_and_title("copy_list_and_append_with_loop")
+lst = [2, 3, 5, 7, 11, 13]
+new_val = [0, 0, 0]
+lst2 = copy_list_and_append_with_loop(lst, new_val)
+print("New list: " + str(lst2))
+
+def copy_list_and_randomize_with_shuffle(lst1):
+    """
+    Copies list and randomizes it with shuffle.
+    """
+    print("lst2 = list(lst1)")
+    print("random.shuffle(lst2)")
+    lst2 = list(lst1)
+    random.shuffle(lst2)
+    return lst2
+
+add_break_and_title("copy_list_and_randomize_with_shuffle")
+lst = [2, 3, 5, 7, 11, 13]
+print("Original list1: " + str(lst1))
+lst2 = copy_list_and_randomize_with_shuffle(lst)
+print("New list: " + str(lst2))
+lst2 = copy_list_and_randomize_with_shuffle(lst)
+print("New list: " + str(lst2))
+lst2 = copy_list_and_randomize_with_shuffle(lst)
+print("New list: " + str(lst2))
+
+def flatten_lists(lst_of_lists):
+    """
+    Returns one list that is composed of all lists.
+    """
+    lst2 = []
+    for l in lst_of_lists:
+        lst2.extend(l)
+    return lst2
+
+add_break_and_title("flatten_lists")
+lst_of_lists = []
+lst2 = flatten_lists(lst_of_lists)
+print("{:>40} => {:<40}".format(str(lst_of_lists), str(lst2)))
+lst_of_lists = [[]]
+lst2 = flatten_lists(lst_of_lists)
+print("{:>40} => {:<40}".format(str(lst_of_lists), str(lst2)))
+lst_of_lists = [[1, 2, 3]]
+lst2 = flatten_lists(lst_of_lists)
+print("{:>40} => {:<40}".format(str(lst_of_lists), str(lst2)))
+lst_of_lists = [["cat", "dog"], ["pig", "cow"]]
+lst2 = flatten_lists(lst_of_lists)
+print("{:>40} => {:<40}".format(str(lst_of_lists), str(lst2)))
+lst_of_lists = [[9, 8, 7], [6, 5], [4, 3, 2], [1]]
+lst2 = flatten_lists(lst_of_lists)
+print("{:>40} => {:<40}".format(str(lst_of_lists), str(lst2)))
+
+def remove_duplicate_elems(lst):
+    """
+    Returns a list of unique values.
+    """
+    updated = []
+    for l in lst:
+        if l not in updated:
+            updated.append(l)
+    return updated
+    
+add_break_and_title("remove_duplicate_elems")
+orig = []
+updated = remove_duplicate_elems(orig)
+print("{:>60} => {:<60}".format(str(orig), str(updated)))
+orig = [1, 2, 3, 4]
+updated = remove_duplicate_elems(orig)
+print("{:>60} => {:<60}".format(str(orig), str(updated)))
+orig = [1, 2, 2, 3, 3, 3, 4, 5, 6, 6]
+updated = remove_duplicate_elems(orig)
+print("{:>60} => {:<60}".format(str(orig), str(updated)))
+orig = ["cat", "dog", "cat", "pig", "cow", "cat", "pig", "pug"]
+updated = remove_duplicate_elems(orig)
+print("{:>60} => {:<60}".format(str(orig), str(updated)))
+
+    
 
