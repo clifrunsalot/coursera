@@ -750,4 +750,25 @@ print('len(final_list)')
 print("{:>5} {:>5} {:>5} {:>5}".format("n", "m", "len",'m*(n-1)'))
 print("\n".join(lens_))
 
+def convert_to_tuple(lst):
+    """
+    Converts list lst into a tuple and returns it.
+    """
+    print("Original lst: " + str(lst))
+    return tuple(lst)
+    
+lst1 = list(range(5))
+add_break_and_title("convert_to_tuple")
+print("converted to tuple: " + str(convert_to_tuple(lst1)))
+
+def convert_to_list(tup):
+    """
+    converts tuple tup into a list and returns it.
+    """
+    print("Original tuple: " + str(tup))
+    return list(tup)
+    
+add_break_and_title("convert_to_list")
+tup1 = (5,6,7,8,9)
+print("Converted to list: " + str(convert_to_list(tup1)))
 
