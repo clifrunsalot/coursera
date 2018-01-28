@@ -941,5 +941,58 @@ orig = ["cat", "dog", "cat", "pig", "cow", "cat", "pig", "pug"]
 updated = remove_duplicate_elems(orig)
 print("{:>60} => {:<60}".format(str(orig), str(updated)))
 
+def fib(lst, count):
+    """
+    Returns the sum after adding the total of the last two items to the list.
+    """
+    fibonacci = []
+    total = 0
+    inner_cnt = 0
+    for c in range(count):
+        for i in lst[-2:]:
+            total = total + i
+            fibonacci.append(total)
+            lst = list(fibonacci)
+            inner_cnt = inner_cnt + 1
+            print("inner_cnt: " + str(inner_cnt) + " : " + str(total) + " : " + str(lst))
+    return fibonacci
     
+add_break_and_title("fibonacci")
+orig_fib = [0,1,1]
+print("Original list: " + str(orig_fib))
+itr = 10
+print("fibonacci sum after iterations: " + str(itr))
+print(fib(orig_fib,itr))
 
+"""
+Implement the Sieve of Eratosthenes
+https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+"""
+
+def compute_primes(bound):
+    """
+    Return a list of the prime numbers in range(2, bound)
+    """
+    answer = list(range(2, bound))
+#    print("answer: " + str(answer))
+    for divisor in range(2, bound):
+        n = divisor + 1
+#        print("divisor: " + str(divisor))
+        for nxt in range(n,bound):
+            # Remove appropriate multiples of divisor from answer
+            if (nxt % divisor == 0):
+#                print("nxt: " + str(nxt))
+                if nxt in answer:
+                    idx = answer.index(nxt)
+                    if idx > -1:
+                        del answer[idx]
+#                    print("new answer: " + str(answer))
+    return answer
+
+add_break_and_title("compute_primes")
+number = 200
+print("find primes for " + str(number))
+print(len(compute_primes(number)))
+number = 2000
+print("find primes for " + str(number))
+print(len(compute_primes(2000)))
