@@ -4,6 +4,16 @@ Demonstration of simple arithmetic expression in Python.
 import random
 
 def add_break_and_title(title):
+    """
+    Prints a formatted string that represents the following:
+    
+    ************* title **************
+    
+    Usage:
+    add_break_and_title(title)
+        where title is a string.
+        
+    """
     print()
     print("************ " + title + " *************")
 
@@ -96,6 +106,11 @@ variables()
 def convert_oz_to_grams(ounces):
     """
     Returns ounces converted to grams.
+    
+    Usage:
+    convert_oz_to_grams(ounces)
+        where ounces is an integer or float and >= 0.
+        
     """
     oz_in_gram = 0.035274 
     mass_in_grams = ounces / oz_in_gram
@@ -949,12 +964,14 @@ def fib(lst, count):
     total = 0
     inner_cnt = 0
     for c in range(count):
+        # this loop is the iteration we are interested because it
+        # loops twice for the last and last-1 positions.
         for i in lst[-2:]:
             total = total + i
             fibonacci.append(total)
             lst = list(fibonacci)
             inner_cnt = inner_cnt + 1
-            print("inner_cnt: " + str(inner_cnt) + " : " + str(total) + " : " + str(lst))
+            print("iteration: " + str(inner_cnt) + " : " + str(total) + " : " + str(lst))
     return fibonacci
     
 add_break_and_title("fibonacci")
@@ -971,28 +988,32 @@ https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
 def compute_primes(bound):
     """
-    Return a list of the prime numbers in range(2, bound)
+    Return a list of the prime numbers in range(2, bound) and
+    length of list.
+    
+    Usage:
+    compute_primes(bound)
+        where bound is an integer > 1.
+        
     """
     answer = list(range(2, bound))
-#    print("answer: " + str(answer))
     for divisor in range(2, bound):
         n = divisor + 1
-#        print("divisor: " + str(divisor))
         for nxt in range(n,bound):
             # Remove appropriate multiples of divisor from answer
             if (nxt % divisor == 0):
-#                print("nxt: " + str(nxt))
                 if nxt in answer:
                     idx = answer.index(nxt)
                     if idx > -1:
                         del answer[idx]
-#                    print("new answer: " + str(answer))
     return answer
 
 add_break_and_title("compute_primes")
 number = 200
 print("find primes for " + str(number))
-print(len(compute_primes(number)))
+print("Size of list: " + str(len(compute_primes(number))))
+print(compute_primes(number))
 number = 2000
 print("find primes for " + str(number))
-print(len(compute_primes(2000)))
+print("Size of list: " + str(len(compute_primes(number))))
+print(compute_primes(number))
