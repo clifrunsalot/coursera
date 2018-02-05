@@ -1,14 +1,11 @@
-import os
-import re
-
 """
 Project for Week 4 of "Python Data Representations".
 Find differences in file contents.
 
-This module contains the methods required for compares two files 
+This module contains the methods required for compares two files
 and returns the first difference discovered if any.
 
-This first function is singleline_diff compares two strings. 
+This first function is singleline_diff compares two strings.
 """
 
 IDENTICAL = -1
@@ -27,13 +24,13 @@ def singleline_diff(line1, line2):
     diff_idx = IDENTICAL
     len_line1 = len(line1)
     len_line2 = len(line2)
-    
-    # Loop thru the index of smaller string to avoid OUT_OF_BOUNDS 
+
+    # Loop thru the index of smaller string to avoid OUT_OF_BOUNDS
     # error.
     #
     # If the strings are of unequal length and the shorter string
     # is a subset of the longer string, starting from 0 to the end
-    # of the shorter string, then the diff occurs at the index 
+    # of the shorter string, then the diff occurs at the index
     # of the end of the shorter string plus 1.
     if len_line1 < len_line2:
         for dummy_ch1 in range(len_line1):
@@ -55,7 +52,7 @@ def singleline_diff(line1, line2):
                 diff_idx = dummy_ch1
                 break
     return diff_idx
-    
+
 def singleline_diff_format(line1, line2, idx):
     """
     Inputs:
@@ -93,13 +90,14 @@ def multiline_diff(lines1, lines2):
 
       Returns (IDENTICAL, IDENTICAL) if the two lists are the same.
     """
-    
+
     len_lst1 = len(lines1)
     len_lst2 = len(lines2)
     diff_idx = IDENTICAL
     diff_tup = (IDENTICAL, IDENTICAL)
-    
-    # loop thru the larger of the two strings to avoid OUT_OF_BOUNDS error.
+
+    # loop thru the larger of the two strings to avoid OUT_OF_BOUNDS
+    # error. Does not assume the lines are of equal length.
     if len_lst1 < len_lst2:
         for l_idx in range(len(lines1)):
             ln1 = lines1[l_idx]
@@ -108,7 +106,7 @@ def multiline_diff(lines1, lines2):
             if diff_idx > -1:
                 diff_tup = (l_idx, diff_idx)
                 break
-                
+
     elif len_lst1 > len_lst2:
         for l_idx in range(len(lines2)):
             ln1 = lines1[l_idx]
@@ -117,7 +115,7 @@ def multiline_diff(lines1, lines2):
             if diff_idx > -1:
                 diff_tup = (l_idx, diff_idx)
                 break
-    
+
     else:
         for l_idx in range(len(lines2)):
             ln1 = lines1[l_idx]
@@ -146,8 +144,8 @@ def get_file_lines(filename):
     file_contents = list(in_file)
     in_file.close()
     for ln1 in file_contents:
-        ln1 = ln1.replace('\n','')
-        ln1 = ln1.replace('\r','')
+        ln1 = ln1.replace('\n', '')
+        ln1 = ln1.replace('\r', '')
         data.append(ln1)
     return data
 
@@ -170,9 +168,9 @@ def file_diff_format(filename1, filename2):
     ret_val = "No differences\n"
     content1 = get_file_lines(filename1)
     content2 = get_file_lines(filename2)
-    
+
     diff_tup = multiline_diff(content1, content2)
-    if diff_tup == (-1,-1):
+    if diff_tup == (-1, -1):
         ret_val = "Identical"
     else:
         # Assumes the list lengths are the same.
@@ -184,7 +182,7 @@ def file_diff_format(filename1, filename2):
                 ret_val = "Line {}:".format(c1i) + '\n'
                 ret_val = ret_val + singleline_diff_format(str1, str2, diff_idx)
                 break
-    
+
     return ret_val
 
 
@@ -193,31 +191,31 @@ def file_diff_format(filename1, filename2):
 ## Tests for singleline_diff
 ##
 ## line2 is longer.
-ln1 = "Hello, my name is George"
-ln2 = "Hello, my name is George Hanson"
-diff_idx = singleline_diff(ln1, ln2)
-print(ln1)
-print(("=" * diff_idx) + "^")
-print(ln2)
-print()
-    
-# line1 is longer and line2 is different. 
-ln1 = "Hello, my name is George Hanson"
-ln2 = "Hello, my name is george"
-diff_idx = singleline_diff(ln1, ln2)
-print(ln1)
-print(("=" * diff_idx) + "^")
-print(ln2)
-print()
+#ln1 = "Hello, my name is George"
+#ln2 = "Hello, my name is George Hanson"
+#idx = singleline_diff(ln1, ln2)
+#print(ln1)
+#print(("=" * idx) + "^")
+#print(ln2)
+#print()
 
-# line1 == line2
-ln1 = "Hello, my name is George"
-ln2 = "Hola, my name is George"
-diff_idx = singleline_diff(ln1, ln2)
-print(ln1)
-print(("=" * diff_idx) + "^")
-print(ln2)
-print()
+## line1 is longer and line2 is different.
+#ln1 = "Hello, my name is George Hanson"
+#ln2 = "Hello, my name is george"
+#idx = singleline_diff(ln1, ln2)
+#print(ln1)
+#print(("=" * idx) + "^")
+#print(ln2)
+#print()
+
+## line1 == line2
+#ln1 = "Hello, my name is George"
+#ln2 = "Hola, my name is George"
+#idx = singleline_diff(ln1, ln2)
+#print(ln1)
+#print(("=" * idx) + "^")
+#print(ln2)
+#print()
 
 
 #
@@ -288,9 +286,9 @@ print()
 #
 # file_diff_format
 #
-#file1 = 'file_1.txt'
-#file2 = 'file_2.txt'
-#file3 = 'file_3.txt'
-#print(file_diff_format(file1, file2))
-#print(file_diff_format(file2, file3))
-#print(file_diff_format(file1, file3))
+#FILE1 = 'file_1.txt'
+#FILE2 = 'file_2.txt'
+#FILE3 = 'file_3.txt'
+#print(file_diff_format(FILE1, FILE2))
+#print(file_diff_format(FILE2, FILE3))
+#print(file_diff_format(FILE1, FILE3))
