@@ -5,7 +5,6 @@ Find differences in file contents.
 This module contains the methods required for compares two files
 and returns the first difference discovered if any.
 
-This first function is singleline_diff compares two strings.
 """
 
 IDENTICAL = -1
