@@ -1104,3 +1104,118 @@ print("Original list: " + str(my_tuples))
 print("{:>20} {:10}".format("my_tuples converted to dict: ", str(make_dict(my_tuples))))
 
 
+add_break_and_title("encrypt")
+
+# Part 1 - Use a dictionary that represents a substition cipher to
+# encrypt a phrase
+# Example of a cipher dictionary 26 lower case letters plus the blank
+CIPHER_DICT = {'e': 'u', 'b': 's', 'k': 'x', 'u': 'q', 'y': 'c', 'm': 'w', 'o': 'y', 'g': 'f', 'a': 'm', 'x': 'j', 'l': 'n', 's': 'o', 'r': 'g', 'i': 'i', 'j': 'z', 'c': 'k', 'f': 'p', ' ': 'b', 'q': 'r', 'z': 'e', 'p': 'v', 'v': 'l', 'h': 'h', 'd': 'd', 'n': 'a', 't': ' ', 'w': 't'}
+
+def encrypt(phrase, cipher_dict):
+    """
+    Take a string phrase (lower case plus blank)
+    and encypt it using the dictionary cipher_dict
+
+    Usage:
+    encrypt(phrase, cipher_dict)
+    where phrase is the string to encrypt and
+        cipher_dict is the dictionary letters and their corresponding
+        values.
+    """
+    ret_val = ""
+    for c in phrase:
+        ret_val += cipher_dict[c]
+    return ret_val
+
+plain_text = "pig"
+print(plain_text + " encrypted into " + str(encrypt(plain_text, CIPHER_DICT)))
+plain_text = "hello world"
+print(plain_text + " encrypted into " + str(encrypt(plain_text, CIPHER_DICT)))
+
+add_break_and_title("make_decipher_dict")
+
+def make_decipher_dict(cipher_dict):
+    """
+    Take a cipher dictionary and return the cipher
+    dictionary that undoes the cipher
+
+    Usage:
+    make_decipher_dict(cipher_dict)
+    where cipher_dict is the original cipher.
+    """
+    ret_val = {}
+    for k,v in cipher_dict.items():
+        ret_val[v] = k
+    return ret_val
+
+DECIPHER_DICT = make_decipher_dict(CIPHER_DICT)
+
+print("CIPHER_DICT: " + str(CIPHER_DICT))
+print("DECIPHER_DICT: " + str(DECIPHER_DICT))
+plain_text = "pig"
+enc = encrypt(plain_text, CIPHER_DICT)
+dec = encrypt(encrypt(plain_text, CIPHER_DICT), DECIPHER_DICT)
+print("{:>15} encrypted to {:15}".format(plain_text, enc))
+print("{:>15} decrypted to {:15}".format(enc, dec))
+
+plain_text = "hello world"
+enc = encrypt(plain_text, CIPHER_DICT)
+dec = encrypt(encrypt(plain_text, CIPHER_DICT), DECIPHER_DICT)
+print("{:>15} encrypted to {:15}".format(plain_text, enc))
+print("{:>15} decrypted to {:15}".format(enc, dec))
+
+add_break_and_title("count_letters")
+
+def count_letters(word_list):
+    """
+    This function should return the lower case letter that appears
+    most frequently (total number of occurrences) in the words in
+    word_list. In the case of ties, return the earliest letter in
+    alphabetical order.
+
+    Usage:
+    count_letters(word_list)
+    where word_list is a list of words.
+
+    """
+    ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+
+    letter_count = {}
+    for letter in ALPHABET:
+        letter_count[letter] = 0
+
+    ltr_sum = 0;
+    for wd in word_list:
+        for ch in wd:
+            letter_count[ch] += 1
+
+    return letter_count
+
+my_list = ['hello','world']
+my_count = count_letters(my_list)
+print("Original list: " + str(my_list))
+print("dict of letter counts: " + str(my_count))
+
+my_count_clean = {}
+for k,v in my_count.items():
+    if v > 0:
+        my_count_clean[k] = v
+
+print(my_count)
+print(my_count_clean)
+
+monty_quote = "listen strange women lying in ponds distributing swords is no basis for a system of government supreme executive power derives from a mandate from the masses not from some farcical aquatic ceremony"
+my_list = monty_quote.split(" ")
+my_count = count_letters(my_list)
+print("Original list: " + str(my_list))
+print("dict of letter counts: " + str(my_count))
+
+my_count_clean = {}
+for k,v in my_count.items():
+    if v > 0:
+        my_count_clean[k] = v
+
+print(my_count)
+print(my_count_clean)
+
+
