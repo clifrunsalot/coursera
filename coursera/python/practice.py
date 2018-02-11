@@ -6,13 +6,13 @@ import random
 def add_break_and_title(title):
     """
     Prints a formatted string that represents the following:
-    
+
     ************* title **************
-    
+
     Usage:
     add_break_and_title(title)
         where title is a string.
-        
+
     """
     print()
     print("************ " + title + " *************")
@@ -64,7 +64,7 @@ def integer_expressions():
     print(4.5 // 2)
     print(4 // 6)
     print(4.5 // 2.2)
-    
+
 add_break_and_title("Integer expressions")
 integer_expressions()
 
@@ -89,7 +89,7 @@ def simple_math_expressions():
     print((7-2)/(3**2))
     print(7/+4)
     print((8 + (1 + (2 * 4) - 3)))
-    
+
 add_break_and_title("Simple math expressions")
 simple_math_expressions()
 
@@ -99,27 +99,27 @@ def variables():
     """
     number123 = 123
     print(number123)
-    
+
 add_break_and_title("Simple variables")
 variables()
 
 def convert_oz_to_grams(ounces):
     """
     Returns ounces converted to grams.
-    
+
     Usage:
     convert_oz_to_grams(ounces)
         where ounces is an integer or float and >= 0.
-        
+
     """
-    oz_in_gram = 0.035274 
+    oz_in_gram = 0.035274
     mass_in_grams = ounces / oz_in_gram
     return mass_in_grams
-    
+
 add_break_and_title("convert grams to oz")
 mass_in_oz = 35
 print("There are " + str(mass_in_oz) + "oz in " + str(convert_oz_to_grams(mass_in_oz)) + " grams")
-    
+
 def convert_ft_to_miles(ft):
     """
     Returns feet converted to miles.
@@ -140,11 +140,11 @@ def convert_miles_to_ft(miles):
     """
     ft_per_mile = 5280
     return miles * ft_per_mile
-    
+
 add_break_and_title("convert miles to ft")
 miles = 10
 print("There are " + str(10) + " miles in " + str(convert_miles_to_ft(miles)) + " ft")
-    
+
 def max_of_2(val1, val2):
     """
     Returns the max of val1 and val2
@@ -164,8 +164,8 @@ add_break_and_title("find max value out of three")
 v1 = 345
 v2 = 123
 v3 = 7
-print("The max value between " 
-        + str(v1) + ", " + str(v2) + ", " + str(v3) + " is " 
+print("The max value between "
+        + str(v1) + ", " + str(v2) + ", " + str(v3) + " is "
         + str(max_of_3(v1, v2, v3)))
 
 #########################
@@ -182,17 +182,17 @@ add_break_and_title("project_to_distance")
 x = 2
 y = 7
 dist = 4
-print("x, y, dist: " + str(x) 
-                + ", " + str(y) 
-                + ", " + str(dist) + " projects to ") 
+print("x, y, dist: " + str(x)
+                + ", " + str(y)
+                + ", " + str(dist) + " projects to ")
 project_to_distance(x, y, dist)
-                
+
 x = 1
 y = 1
 dist = 4
-print("x, y, dist: " + str(x) 
-                + ", " + str(y) 
-                + ", " + str(dist) + " projects to ") 
+print("x, y, dist: " + str(x)
+                + ", " + str(y)
+                + ", " + str(dist) + " projects to ")
 project_to_distance(x, y, dist)
 
 def future_value(present_value, annual_rate, periods_per_year, years):
@@ -205,7 +205,7 @@ def future_value(present_value, annual_rate, periods_per_year, years):
 
     # Put your code here.
     return (present_value * ((1 + rate_per_period) ** periods))
-    
+
 add_break_and_title("Calculate future value based on rate over years")
 print("$1000 at 2% compounded daily for 4 years yields $", future_value(1000, .02, 365, 4))
 print("$500 at 4% compounded 10 times per year for 10 years yields $", future_value(500, .04, 10, 10))
@@ -257,7 +257,7 @@ def is_even(number):
     Returns true if number is even.
     """
     return (number % 2) == 0
-	
+
 add_break_and_title("Check if number is even")
 number = 5
 print(str(number) + " is even: " + str(is_even(number)))
@@ -274,7 +274,7 @@ def is_lunchtime(hr, is_morning):
 		return True
 	else:
 		return False
-	
+
 def is_lunchtime_test(hour, is_am):
 	"""
 	Tests the is_lunchtime function.
@@ -324,7 +324,7 @@ def interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper):
 	Return true if int1 intersects with int2
 	"""
 	return int2_lower <= int1_upper and int1_lower <= int2_upper
-	
+
 int1_lower, int1_upper, int2_lower, int2_upper = 0, 1, 1, 2
 print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
 
@@ -367,9 +367,9 @@ print("#############")
 def get_discriminant(coeff_a, coeff_b, coeff_c):
     """
 	Returns the value of the discriminant.
-    
+
     (b**2) - (4*a*c)
-    
+
     """
     discriminant = (coeff_b ** 2) - (4 * coeff_a * coeff_c)
     if discriminant >= 0:
@@ -418,7 +418,7 @@ def slice_string_example():
     Simple string slicing exercises.
     """
     word = "everything"
-    
+
     print("word = everything")
     print("substrings")
     print("word[1:5]              => " + word[1:5])
@@ -435,7 +435,7 @@ def slice_string_example():
     print("empty slices")
     print("word[6:6]              => " + word[6:6])
     print("word[4:2]              => " + word[4:2])
-    
+
 add_break_and_title("slice_string_example")
 slice_string_example()
 
@@ -445,7 +445,7 @@ def format_specifiers(name, age):
     """
     last_yr = age-1
     print("{0} is {1} years old, but {0} was {2} years old last year".format(name, age, last_yr))
-    
+
 add_break_and_title("format_specifiers")
 format_specifiers("clif",52)
 
@@ -457,7 +457,7 @@ def fix_strings():
     string2 = "'It's just a flesh wound'"
     string3 = "\"It's just a flesh wound\""
     string4 = "\"\"It's just a flesh wound"
-    
+
     print(string1)
     print(string2)
     print(string3)
@@ -471,7 +471,7 @@ def get_first_last_characters(str1):
     Returns the first and last characters of str.
     """
     return str1[0] + str1[-1]
-    
+
 add_break_and_title("get_first_last_characters")
 print(get_first_last_characters("Hello"))
 print(get_first_last_characters("Melly"))
@@ -494,7 +494,7 @@ def get_threes(str1):
     first_3 = str1[:3]
     last_3 = str1[-3:]
     return first_3 + last_3
-    
+
 add_break_and_title("get_threes")
 print(get_threes("Where in the world is Carmen San Diego"))
 print(get_threes("Peter piper picked a peck of pickles"))
@@ -515,7 +515,7 @@ def is_substring(example_string, test_string):
     """
     return example_string.find(test_string) > -1
 
-add_break_and_title("is_substring")    
+add_break_and_title("is_substring")
 outside_str = "Winebago"
 inside_str = "eb"
 print(inside_str + " is a substring of " + outside_str + ": " + str(is_substring(outside_str, inside_str)))
@@ -542,7 +542,7 @@ def make_nametag(name, topic):
     and YYY is replaced by YYY.
     """
     return "Hi! My name is {0}. This lecture covers {1}".format(name, topic)
-    
+
 add_break_and_title("make_nametag")
 print(make_nametag("clif","python"))
 print(make_nametag("george","monkeying around"))
@@ -556,7 +556,7 @@ def make_int(int_string):
         return int(int_string)
     else:
         return -1
-    
+
 add_break_and_title("make_int")
 int_string = "123"
 print(int_string + " contains an integer: " + str(make_int(int_string)))
@@ -578,7 +578,7 @@ def name_swap(name_string):
     first = name_string[:spacer]
     last = name_string[spacer+1:]
     return (last + " " + first).title()
-    
+
 add_break_and_title("name_swap")
 print(name_swap("clif hudson"))
 
@@ -589,9 +589,9 @@ def count_vowels(word):
     total = 0
     for ch in ("a","e","i","o","u"):
         total += word.count(ch.lower())
-        
+
     return total
-    
+
 add_break_and_title("count_vowels")
 word_ = "aaassseefffgggiiijjjoOOkkkuuuu"
 print(word_ + " has " + str(count_vowels(word_)) + " lowercase vowels.")
@@ -604,7 +604,7 @@ def demystify(l1_string):
     Returns a string where l is replaced by a and 1 is replaced by b.
     """
     return l1_string.replace("l","a").replace("1","b")
-    
+
 add_break_and_title("demystify")
 word_ = "lll111l1l1l1111lll"
 print(demystify(word_))
@@ -621,9 +621,9 @@ def show_prime_indices(primes):
     print("List of primes and their indices")
     str_list = []
     for p in primes:
-        str_list.append(str(p) + " [" + str(len(str_list)) + "]") 
+        str_list.append(str(p) + " [" + str(len(str_list)) + "]")
     return str_list
-    
+
 add_break_and_title("show_prime_indices")
 print(show_prime_indices(primes))
 
@@ -633,7 +633,7 @@ def get_primes(primes, count):
     """
     print("Primes up to index " + str(count) + ": " + str(primes[:count]))
     return primes[:count]
-    
+
 def get_primes_in_list(primes, idx_list):
     """
     Returns the prime numbers in the primes list at the indices in idx_list.
@@ -673,7 +673,7 @@ def combine_first_last(lst):
     ret_val.append(lst[0])
     ret_val.append(lst[-1])
     return ret_val
-    
+
 add_break_and_title("combine_first_last")
 example_list = [2, 3, 5, 7, 11, 13]
 print(combine_first_last(example_list))
@@ -694,7 +694,7 @@ def true_false_list():
     """
     lst = 8 * [True] + 8 * [False]
     return lst
-    
+
 add_break_and_title("true_false_list")
 print(true_false_list())
 
@@ -704,7 +704,7 @@ def split_words_into_list(wrd):
     """
     print("Words to split: " + wrd)
     return wrd.split(" ")
-    
+
 add_break_and_title("split_words_into_list")
 print(split_words_into_list("hello my name is george."))
 
@@ -716,7 +716,7 @@ def word_count(txt, wrd):
     print("Word to find: " + wrd)
     wrds = txt.split(" ")
     return wrds.count(wrd)
-    
+
 add_break_and_title("word_count")
 find_str = "pigdog"
 print(word_count("this pigdog is a fine pigdog", find_str))
@@ -735,7 +735,7 @@ def strange_sum(numbers):
         if n % 3:
             total += n
     return total
-    
+
 add_break_and_title("strange_sum")
 numbers = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
 print(strange_sum(numbers))
@@ -772,7 +772,7 @@ def convert_to_tuple(lst):
     """
     print("Original lst: " + str(lst))
     return tuple(lst)
-    
+
 lst1 = list(range(5))
 add_break_and_title("convert_to_tuple")
 print("converted to tuple: " + str(convert_to_tuple(lst1)))
@@ -783,7 +783,7 @@ def convert_to_list(tup):
     """
     print("Original tuple: " + str(tup))
     return list(tup)
-    
+
 add_break_and_title("convert_to_list")
 tup1 = (5,6,7,8,9)
 print("Converted to list: " + str(convert_to_list(tup1)))
@@ -796,7 +796,7 @@ def change_list_value(lst, idx, new_val):
     print("Set idx " + str(idx) + " to " + str(new_val))
     lst[idx] = new_val
     return lst
-    
+
 add_break_and_title("change_list_value")
 lst = [1,2,3,4,5]
 idx = 3
@@ -941,7 +941,7 @@ def remove_duplicate_elems(lst):
         if l not in updated:
             updated.append(l)
     return updated
-    
+
 add_break_and_title("remove_duplicate_elems")
 orig = []
 updated = remove_duplicate_elems(orig)
@@ -973,7 +973,7 @@ def fib(lst, count):
             inner_cnt = inner_cnt + 1
             print("iteration: " + str(inner_cnt) + " : " + str(total) + " : " + str(lst))
     return fibonacci
-    
+
 add_break_and_title("fibonacci")
 orig_fib = [0,1,1]
 print("Original list: " + str(orig_fib))
@@ -990,11 +990,11 @@ def compute_primes(bound):
     """
     Return a list of the prime numbers in range(2, bound) and
     length of list.
-    
+
     Usage:
     compute_primes(bound)
         where bound is an integer > 1.
-        
+
     """
     answer = list(range(2, bound))
     for divisor in range(2, bound):
@@ -1017,3 +1017,90 @@ number = 2000
 print("find primes for " + str(number))
 print("Size of list: " + str(len(compute_primes(number))))
 print(compute_primes(number))
+
+def is_exists(my_dict, ky):
+    """
+    Returns True if the key exists in the dictionary.
+
+    Usage:
+    is_exists(my_dict, ky)
+    where my_dict is a non-empty dictionary
+          ky is a value to test.
+    """
+    return ky in my_dict
+
+add_break_and_title("is_exists")
+my_dict_ = {'Joe':1, 'Scott': 2, 'John':3}
+print("Original dictionary: " + str(my_dict_))
+nm = 'Joe'
+print("{:>30} {:10}".format(nm + " is in my_dict: ", str(is_exists(my_dict_, nm))))
+nm = 'Scott'
+print("{:>30} {:10}".format(nm + " is in my_dict: ", str(is_exists(my_dict_, nm))))
+nm = 'John'
+print("{:>30} {:10}".format(nm + " is in my_dict: ", str(is_exists(my_dict_, nm))))
+nm = 'James'
+print("{:>30} {:10}".format(nm + " is in my_dict: ", str(is_exists(my_dict_, nm))))
+
+def is_empty(my_dict):
+    """
+    Returns True if the dictionary is empty.
+
+    Usage:
+    is_empty(my_dict)
+    where my_dict is a dictionary reference.
+    """
+    return len(my_dict) == 0
+
+add_break_and_title("is_empty")
+my_dict_ = {'Joe':1, 'Scott': 2, 'John':3}
+print("Original dictionary: " + str(my_dict_))
+print("{:>20} {:10}".format("my_dict is empty: ", str(is_empty(my_dict_))))
+my_dict_ = {}
+print("Original dictionary: " + str(my_dict_))
+print("{:>20} {:10}".format("my_dict is empty: ", str(is_empty(my_dict_))))
+
+def value_sum(my_dict):
+    """
+    Returns the sum of value in the dictionary.
+
+    Usage:
+    value_sum(my_dict)
+    where my_dict is a dictionary of values of integer type.
+
+    """
+    total = 0
+    for k,v in my_dict.items():
+        total += v
+
+    return total
+
+add_break_and_title("value_sum")
+my_dict_ = {'Joe':1, 'Scott': 2, 'John':3}
+print("Original dictionary: " + str(my_dict_))
+print("{:>20} {:10}".format("Sum of value in my_dict_: ", str(value_sum(my_dict_))))
+
+my_dict_ = {'Joe':1, 'Scott': 0, 'John':0}
+print("Original dictionary: " + str(my_dict_))
+print("{:>20} {:10}".format("Sum of value in my_dict_: ", str(value_sum(my_dict_))))
+
+def make_dict(key_value_list):
+    """
+    Returns a dictionary converted from the list of tuples.
+
+    Usage:
+    make_dict(key_value_list)
+    where key_value_list is a list of tuples with each
+        tuple contains a key,value pair.
+    """
+    return dict(key_value_list)
+
+add_break_and_title("make_dict")
+my_tuples = [('Joe',1),('Scott',2),('John',3)]
+print("Original list: " + str(my_tuples))
+print("{:>20} {:10}".format("my_tuples converted to dict: ", str(make_dict(my_tuples))))
+
+my_tuples = [('Joe',0),('Scott',-1),('John',99)]
+print("Original list: " + str(my_tuples))
+print("{:>20} {:10}".format("my_tuples converted to dict: ", str(make_dict(my_tuples))))
+
+
