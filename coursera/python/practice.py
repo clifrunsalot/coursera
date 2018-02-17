@@ -1218,7 +1218,7 @@ for k,v in my_count.items():
 print(my_count)
 print(my_count_clean)
 
-add_break_and_title("Tables")
+add_break_and_title("Tables: Lists of Lists")
 
 popularity = [["Language", 2017, 2012, 2007, 2002, 1997, 1992, 1987],
                 ["Java", 1 ,2, 1, 1, 15, 0, 0],
@@ -1294,3 +1294,120 @@ rw = find_row(popularity,lang)
 cl = find_col(popularity,yr)
 print("Popularity of " + str(lang) + " in the year " + str(yr) + ": "
     + str(popularity[rw][cl]))
+
+add_break_and_title("Tables: Dictionary of Dictionaries")
+
+my_dict = {
+    'Android':{'vendor':'Google',
+                'type':'Operating System',
+                'number': 564},
+    'Linux Kernel':{'vendor':'Linux',
+                    'type':'Operating System',
+                    'number': 367},
+    'Imagemagick':{'vendor':'Imagemagick',
+                    'type':'Application',
+                    'number':307}
+}
+
+print("Original dictionary: ")
+print(my_dict)
+print("")
+print("Formatted dictionary: ")
+print("{:20} {:15} {:20} {:5}".format("Product","Vendor","Type","Number"))
+print("-" * (20+15+20+15))
+for product, value in my_dict.items():
+    row = "{:20} {:15} {:20} {:5}".format(product, value['vendor'], value['type'], value['number'])
+    print(row)
+print("")
+os = 'Linux Kernel'
+val = 'vendor'
+print("Find " + val + " value of the os " + os)
+print(my_dict[os][val])
+os = 'Imagemagick'
+val = 'number'
+print("Find " + val + " value of the os " + os)
+print(my_dict[os][val])
+
+def find_greatest_number(my_dict):
+    """
+    Returns the greatest number in my_dict.
+    """
+    max_nbr = 0;
+    max_pdt = None;
+
+    for product, values in my_dict.items():
+        if values['number'] > max_nbr:
+            max_nbr = values['number']
+            max_pdt = product
+    return (max_pdt, max_nbr)
+
+add_break_and_title("find_greatest_number")
+prd_nbr = find_greatest_number(my_dict)
+print(prd_nbr[0])
+
+add_break_and_title("dict_copies")
+
+def dict_copies(my_dict_, num_copies_):
+    """
+    Given a dictionary my_dict and an integer num_copies,
+    returns a list consisting of num_copies of my_dict.
+    """
+    my_list = []
+    for cp in range(num_copies_):
+        my_list.append(dict(my_dict_))
+
+    return my_list
+
+my_dict = {'a':1, 'b':2}
+print("Original dictionary")
+print(my_dict)
+print("dictionary copies")
+num_cpy = 0
+print(dict_copies(my_dict, num_cpy))
+num_cpy = 1
+print(dict_copies(my_dict, num_cpy))
+num_cpy = 2
+print(dict_copies(my_dict, num_cpy))
+num_cpy = 3
+print(dict_copies(my_dict, num_cpy))
+print("check for reference issues")
+print("original dic")
+test_dict = dict_copies(my_dict, num_cpy)
+print(test_dict)
+print("changing a value with")
+print("test_dict[1]['a']=3")
+test_dict[1]['a']=3
+print("Afterwards. No issues if only one of the 'a' values matches the change")
+print(test_dict)
+
+add_break_and_title("make_grade_table")
+
+students = ['Joe','Scott','John']
+grades = [['Joe',100,98,100,13],
+            ['Scott',75,59,89,77],
+            ['John',86,84,91,78]]
+
+def make_grade_table(name_list, grades_list):
+    """
+    Takes list of names name_list and list of grade grades_list
+    and returns a dictionary whose keys corresponds to names
+    name_list and whose corresponding values are the items grades_list.
+    """
+    out_dict={}
+    for name, grades in zip(name_list, grades_list):
+        if name == grades[0]:
+            out_dict[name] = list(grades[1:])
+    return out_dict
+
+print("Original student grade list")
+for s in grades:
+    print(s)
+grades_table_dict = make_grade_table(students, grades)
+print("Formatted student grade list converted into a dictionary")
+print("{:10} {:10} {:10} {:10} {:10}".format("Student","Assign #1","Assign #2","Assign #3","Assign #4"))
+print("-" * (10*6))
+for k,v in grades_table_dict.items():
+    rw = "{:10} {:10} {:10} {:10} {:10}".format(k,*v)
+    print(rw)
+
+
