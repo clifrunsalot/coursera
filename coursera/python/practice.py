@@ -1218,4 +1218,79 @@ for k,v in my_count.items():
 print(my_count)
 print(my_count_clean)
 
+add_break_and_title("Tables")
 
+popularity = [["Language", 2017, 2012, 2007, 2002, 1997, 1992, 1987],
+                ["Java", 1 ,2, 1, 1, 15, 0, 0],
+                ["C", 2, 1, 2, 2, 1, 1, 1],
+                ["C++", 3, 3, 3, 3, 2, 2, 5],
+                ["C#", 4, 4, 7, 13, 0, 0, 0],
+                ["Python", 5, 7, 6, 11, 27, 0, 0],
+                ["Visual Basic .NET", 6, 17, 0, 0, 0, 0, 0],
+                ["PHP", 7, 6, 4, 5, 0, 0, 0],
+                ["JavaScript", 8, 9, 8, 7, 23, 0, 0],
+                ["Perl", 9, 8, 5, 4, 4, 10, 0]]
+
+print("Original table:")
+print(popularity)
+print("")
+print("Formatted table: ")
+format_string = "{:<18} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}"
+headers = popularity[0]
+header_row = format_string.format(*headers)
+print(header_row)
+print("-" * len(header_row))
+for lang in popularity[1:]:
+    print(format_string.format(*lang))
+
+def find_row(table, lang):
+    """
+    Returns the row index for lang in table.
+    """
+    row = -1
+    for row in range(len(table)):
+        if lang in table[row][0]:
+            return row
+    return row
+
+add_break_and_title("find_row")
+lang = "Java"
+print("Row for " + str(lang) + " in popularity table")
+print(find_row(popularity, lang))
+
+lang = "Perl"
+print("Row for " + str(lang) + " in popularity table")
+print(find_row(popularity, lang))
+
+def find_col(table, year):
+    """
+    Returns the column index for the year in the table.
+    """
+    return table[0].index(year)
+
+add_break_and_title("find_col")
+yr = 2017
+print("column for " + str(yr) + " in popularity table")
+print(find_col(popularity, yr))
+
+yr = 2012
+print("column for " + str(yr) + " in popularity table")
+print(find_col(popularity, yr))
+
+yr = 2002
+print("column for " + str(yr) + " in popularity table")
+print(find_col(popularity, yr))
+
+lang = "C++"
+yr = 1997
+rw = find_row(popularity,lang)
+cl = find_col(popularity,yr)
+print("Popularity of " + str(lang) + " in the year " + str(yr) + ": "
+    + str(popularity[rw][cl]))
+
+lang = "Python"
+yr = 2012
+rw = find_row(popularity,lang)
+cl = find_col(popularity,yr)
+print("Popularity of " + str(lang) + " in the year " + str(yr) + ": "
+    + str(popularity[rw][cl]))
