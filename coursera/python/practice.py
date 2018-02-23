@@ -1634,3 +1634,62 @@ print("Original file content")
 print(tbl)
 print("Formatted file content")
 print_table_3(tbl)
+
+add_break_and_title("Working with dictreader options")
+
+def parse_file_4(file_in, key_field, separator, quote, quotestrategy):
+    """
+    Returns a dictionary of dictionaries parsed from the file and
+    list of column header names.
+    Key_field is the name of the first column header.
+    separator is the delimiter.
+    quote is the character used to quote the strings.
+    quotestrategy is how to intepret strings being quoted.
+    """
+    table = {}
+    with open(file_in) as csvfile:
+        csvreader = csv.DictReader(csvfile,
+                                    skipinitialspace=True,
+                                    delimiter=separator,
+                                    quotechar=quote,
+                                    quoting=quotestrategy)
+
+        for row in csvreader:
+            table[row[key_field]] = row
+
+    return table, csvreader.fieldnames
+
+def print_table_4(table_in, field_names):
+    """
+    Prints a formatted table.
+    field_names is the names of the column headers in the table table_in.
+    """
+    # print the first column header name at width 20.
+    print('{:20}'.format(field_names[0]),end = '')
+    # print the rest of the column headers name at width 5.
+    for mon in field_names[1:]:
+        print('{:>5}'.format(mon), end = '')
+    print('',end='\n')
+
+    # loop thru each key and value and use dict indices to get values.
+    for name, temps in table_in.items():
+
+        # print row header (city name)
+        print('{:20}'.format(name),end = '')
+
+        # print temps for each month for the current city.
+        for mon in field_names[1:]:
+            print('{:>5}'.format(table_in[name][mon]), end='')
+
+        # add a newline
+        print('',end='\n')
+
+file_name = "hightemp2.csv"
+header_col_name = 'City'
+tbl, col_names = parse_file_4(file_name, header_col_name,',','"',csv.QUOTE_MINIMAL)
+print("Original file content")
+print(tbl)
+print(col_names)
+print("Formatted file content")
+print_table_4(tbl, col_names)
+
