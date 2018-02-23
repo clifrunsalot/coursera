@@ -1420,68 +1420,68 @@ for row in range(NUM_ROWS):
     for col in range(NUM_COLS):
         row_dict[col] = row * col
     my_matrix[row] = row_dict
-    
+
 print(my_matrix)
- 
+
 # print the matrix
 for row in range(NUM_ROWS):
     for col in range(NUM_COLS):
         print(my_matrix[row][col], end = " ")
     print()
-    
+
 matrix_3 = {1: {1: 2, 7: 2, 3: 2, 8: 2, 0: 2, 5: 2, 2: 2, 6: 2, 4: 2}, 2: {5: 4, 1: 4, 8: 4, 0: 4, 3: 4, 2: 4, 4: 4, 7: 4, 6: 4}, 3: {4: 6, 2: 6, 1: 6, 5: 6, 0: 6, 7: 6, 8: 6, 3: 6, 6: 6}, 0: {0: 0, 5: 0, 6: 0, 8: 0, 1: 0, 3: 0, 2: 0, 4: 0, 7: 0}, 4: {3: 8, 8: 8, 7: 8, 5: 8, 4: 8, 1: 8, 2: 8, 6: 8, 0: 8}}
 if my_matrix == matrix_3:
-	print("matrix_3 matches")
-	
+    print("matrix_3 matches")
+
 matrix_4 = {1: {7: 7, 4: 4, 3: 3, 8: 8, 6: 6, 5: 5, 2: 2, 0: 0, 1: 1}, 0: {0: 0, 7: 0, 3: 0, 4: 0, 8: 0, 6: 0, 5: 0, 1: 0, 2: 0}, 2: {0: 0, 8: 16, 5: 10, 2: 4, 7: 14, 4: 8, 1: 2, 3: 6, 6: 12}, 3: {1: 3, 7: 21, 2: 6, 8: 24, 3: 9, 4: 12, 6: 18, 0: 0, 5: 18}, 4: {3: 12, 7: 28, 0: 0, 2: 8, 1: 4, 4: 16, 6: 24, 5: 20, 8: 32}}
 if my_matrix == matrix_4:
-	print("matrix_4 matches")
+    print("matrix_4 matches")
 
 matrix_1 = {2: {6: 12, 2: 4, 0: 0, 7: 14, 5: 10, 3: 6, 8: 16, 4: 8, 1: 2}, 4: {0: 0, 3: 12, 2: 8, 6: 24, 4: 16, 5: 20, 8: 32, 7: 28, 1: 4}, 1: {2: 2, 5: 5, 3: 3, 8: 8, 4: 4, 1: 1, 7: 7, 0: 0, 6: 6}, 3: {4: 12, 0: 0, 8: 24, 6: 18, 7: 21, 3: 9, 5: 15, 1: 3, 2: 6}, 0: {8: 0, 1: 0, 6: 0, 2: 0, 4: 0, 5: 0, 3: 0, 0: 0, 7: 0}}
 if my_matrix == matrix_1:
-	print("matrix_1 matches")
-	
+    print("matrix_1 matches")
+
 matrix_2 = [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 2, 4, 6, 8, 10, 12, 14, 16], [0, 3, 6, 9, 12, 15, 18, 21, 24], [0, 4, 8, 12, 16, 20, 24, 28, 32]]
 if my_matrix == matrix_2:
-	print("matrix_2 matches")
+    print("matrix_2 matches")
 
 
 add_break_and_title("Calculate trace value a square matrix")
 
 def construct_square_matrix(num):
-	"""
-	Returns a matrix with equal rows and columns.
-	"""
-	my_matrix = []
-	for row in range(num):
-		new_row = []
-		for col in range(num):
-			new_row.append(row * col)
-		my_matrix.append(new_row)
-	return my_matrix
+    """
+    Returns a matrix with equal rows and columns.
+    """
+    my_matrix = []
+    for row in range(num):
+        new_row = []
+        for col in range(num):
+            new_row.append(row * col)
+        my_matrix.append(new_row)
+    return my_matrix
 
 def print_matrix(matrix):
-	"""
-	Pretty prints a matrix.
-	"""
-	for row in my_matrix:
-		cols = len(my_matrix[0])
-		spacer = "{:4} " * cols
-		print(spacer.format(*row))
+    """
+    Pretty prints a matrix.
+    """
+    for row in my_matrix:
+        cols = len(my_matrix[0])
+        spacer = "{:4} " * cols
+        print(spacer.format(*row))
 
 def trace(matrix):
-	"""
-	Calculates the trace value of the square matrix provided, which 
-	means taking the sum of all values in the diagonal created
-	in the squared matrix.
-	"""
-	trace_val = 0;
-	for row in range(len(matrix)):
-		for col in range(len(matrix[0])):
-			if row == col:
-				trace_val += matrix[row][col]
-	return trace_val
-	
+    """
+    Calculates the trace value of the square matrix provided, which
+    means taking the sum of all values in the diagonal created
+    in the squared matrix.
+    """
+    trace_val = 0;
+    for row in range(len(matrix)):
+        for col in range(len(matrix[0])):
+            if row == col:
+                trace_val += matrix[row][col]
+    return trace_val
+
 # construct a matrix
 NUM_ROWS = 5
 NUM_COLS = NUM_ROWS
@@ -1490,7 +1490,7 @@ my_matrix = construct_square_matrix(NUM_ROWS)
 print("Original matrix")
 print(my_matrix)
 print("Formatted matrix")
-print_matrix(my_matrix)    
+print_matrix(my_matrix)
 print("The trace value: " + str(trace(my_matrix)))
 
 NUM_ROWS = 6
@@ -1500,7 +1500,7 @@ my_matrix = construct_square_matrix(NUM_ROWS)
 print("Original matrix")
 print(my_matrix)
 print("Formatted matrix")
-print_matrix(my_matrix)    
+print_matrix(my_matrix)
 print("The trace value: " + str(trace(my_matrix)))
 
 NUM_ROWS = 7
@@ -1510,7 +1510,7 @@ my_matrix = construct_square_matrix(NUM_ROWS)
 print("Original matrix")
 print(my_matrix)
 print("Formatted matrix")
-print_matrix(my_matrix)    
+print_matrix(my_matrix)
 print("The trace value: " + str(trace(my_matrix)))
 
 NUM_ROWS = 25
@@ -1520,34 +1520,34 @@ my_matrix = construct_square_matrix(NUM_ROWS)
 print("Original matrix")
 print(my_matrix)
 print("Formatted matrix")
-print_matrix(my_matrix)    
+print_matrix(my_matrix)
 print("The trace value: " + str(trace(my_matrix)))
 
 add_break_and_title("Working with csv files")
 
 def parse(file_in):
-	"""
-	Returns a list of list created from parsing a csv file.
-	"""
-	table = []
-	with open(file_in,'rt') as csvfile:
-		for line in csvfile:
-			# remove trailing whitespace, including newlines.
-			line = line.rstrip()
-			line = line.split(",")
-			table.append(line)
-			
-	return table
-	
+    """
+    Returns a list of list created from parsing a csv file.
+    """
+    table = []
+    with open(file_in,'rt') as csvfile:
+        for line in csvfile:
+            # remove trailing whitespace, including newlines.
+            line = line.rstrip()
+            line = line.split(",")
+            table.append(line)
+
+    return table
+
 def print_table(table_in):
-	"""
-	Displays a formatted table table_in created as a list of lists.
-	"""
-	print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
-	
-	for line in table_in[1:]:
-		print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
-			
+    """
+    Displays a formatted table table_in created as a list of lists.
+    """
+    print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
+
+    for line in table_in[1:]:
+        print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
+
 file_name = "hightemp.csv"
 tbl = parse(file_name)
 
@@ -1560,27 +1560,27 @@ add_break_and_title("Working with csv reader module")
 
 import csv
 def parse_2(file_in):
-	"""
-	Returns a list of lists created from a csv file.
-	"""
-	table = []
-	with open(file_in) as csvfile:
-		reader = csv.reader(csvfile, skipinitialspace=True)
-		for line in reader:
-			table.append(line)
-	return table
-			
-def print_table_2(table_in):
-	"""
-	Displays a formatted table table_in created as a list of lists.
-	"""
-	print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
-	
-	for line in table_in[1:]:
-		print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
-			
+    """
+    Returns a list of lists created from a csv file.
+    """
+    table = []
+    with open(file_in) as csvfile:
+        reader = csv.reader(csvfile, skipinitialspace=True)
+        for line in reader:
+            table.append(line)
+    return table
 
-			
+def print_table_2(table_in):
+    """
+    Displays a formatted table table_in created as a list of lists.
+    """
+    print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
+
+    for line in table_in[1:]:
+        print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
+
+
+
 file_name = "hightemp2.csv"
 tbl = parse_2(file_name)
 print("Original file content")
@@ -1591,35 +1591,41 @@ print_table_2(tbl)
 add_break_and_title("Working with csv DictReader module")
 
 def parse_file_3(file_in, key_field):
-	"""
-	Returns a dictionary created by parsing a file with the csv
-	DictReader. The key_field is the column header title
-	used as by dictreader to associate row headers as keys for
-	their associated rows.
-	"""
-	table = {}
-	with open(file_in) as csvfile:
-		csvreader = csv.DictReader(csvfile, skipinitialspace=True)
-		for line in csvreader:
-			table[line[key_field]] = line
-	return table
-	
+    """
+    Returns a dictionary created by parsing a file with the csv
+    DictReader. The key_field is the column header title
+    used as by dictreader to associate row headers as keys for
+    their associated rows.
+    """
+    table = {}
+    with open(file_in) as csvfile:
+        csvreader = csv.DictReader(csvfile, skipinitialspace=True)
+        for line in csvreader:
+            table[line[key_field]] = line
+    return table
+
 def print_table_3(table_in):
-	"""
-	Displays a formatted table table_in created as a dictionary of dictionaries.
-	"""
-	
-	MONTH = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
-	
-	print('{:20}'.format('City'),end='')
-	for mon in MONTH:
-		print('{:>4}'.format(mon),end='')
-		
-	for city,row in table_in.items():
-		for mon in MONTH:
-			print('{:20} {:>4}'.format(city,table_in[city][mon]),end='') 
-		
-			
+    """
+    Displays a formatted table table_in created as a dictionary of dictionaries.
+    """
+
+    MONTH = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
+
+    print('{:20}'.format('City'),end='')
+    for mon in MONTH:
+        print('{:>4}'.format(mon),end='')
+    print('',end='\n')
+
+    for city,row in table_in.items():
+        # print the city name
+        print('{:20}'.format(city), end='')
+
+        # then print the temps for the city
+        for mon in MONTH:
+            print('{:>4}'.format(table_in[city][mon]),end='')
+
+        # print a newline at the end of the row
+        print("",end='\n')
 
 file_name = "hightemp2.csv"
 header_col_name = 'City'
