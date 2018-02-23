@@ -1522,3 +1522,109 @@ print(my_matrix)
 print("Formatted matrix")
 print_matrix(my_matrix)    
 print("The trace value: " + str(trace(my_matrix)))
+
+add_break_and_title("Working with csv files")
+
+def parse(file_in):
+	"""
+	Returns a list of list created from parsing a csv file.
+	"""
+	table = []
+	with open(file_in,'rt') as csvfile:
+		for line in csvfile:
+			# remove trailing whitespace, including newlines.
+			line = line.rstrip()
+			line = line.split(",")
+			table.append(line)
+			
+	return table
+	
+def print_table(table_in):
+	"""
+	Displays a formatted table table_in created as a list of lists.
+	"""
+	print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
+	
+	for line in table_in[1:]:
+		print("{:15} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
+			
+file_name = "hightemp.csv"
+tbl = parse(file_name)
+
+print("Original file contents")
+print(tbl)
+print("Formatted file contents")
+print_table(tbl)
+
+add_break_and_title("Working with csv reader module")
+
+import csv
+def parse_2(file_in):
+	"""
+	Returns a list of lists created from a csv file.
+	"""
+	table = []
+	with open(file_in) as csvfile:
+		reader = csv.reader(csvfile, skipinitialspace=True)
+		for line in reader:
+			table.append(line)
+	return table
+			
+def print_table_2(table_in):
+	"""
+	Displays a formatted table table_in created as a list of lists.
+	"""
+	print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*table_in[0]))
+	
+	for line in table_in[1:]:
+		print("{:20} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4} {:>4}".format(*line))
+			
+
+			
+file_name = "hightemp2.csv"
+tbl = parse_2(file_name)
+print("Original file content")
+print(tbl)
+print("Formatted file content")
+print_table_2(tbl)
+
+add_break_and_title("Working with csv DictReader module")
+
+def parse_file_3(file_in, key_field):
+	"""
+	Returns a dictionary created by parsing a file with the csv
+	DictReader. The key_field is the column header title
+	used as by dictreader to associate row headers as keys for
+	their associated rows.
+	"""
+	table = {}
+	with open(file_in) as csvfile:
+		csvreader = csv.DictReader(csvfile, skipinitialspace=True)
+		for line in csvreader:
+			table[line[key_field]] = line
+	return table
+	
+def print_table_3(table_in):
+	"""
+	Displays a formatted table table_in created as a dictionary of dictionaries.
+	"""
+	
+	MONTH = ('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')
+	
+	print('{:20}'.format('City'),end='')
+	for mon in MONTH:
+		print('{:>4}'.format(mon),end='')
+		
+	for city,row in table_in.items():
+		for mon in MONTH:
+			print('{:20} {:>4}'.format(city,table_in[city][mon]),end='') 
+		
+			
+
+file_name = "hightemp2.csv"
+header_col_name = 'City'
+tbl = parse_file_3(file_name, header_col_name)
+print("Original file content")
+print(tbl)
+print("Formatted file content")
+print_table_3(tbl)
