@@ -121,9 +121,7 @@ def filter_by_year(statistics, year, yearid):
       Returns a list of batting statistics dictionaries that
       are from the input year.
     """
-    output = []
-    output = list(filter(lambda row: row[yearid] == str(year), statistics))
-    return output
+    return list(filter(lambda row: row[yearid] == str(year), statistics))
 
 
 def top_player_ids(info, statistics, formula, numplayers):
@@ -193,7 +191,8 @@ def compute_top_stats_year(info, formula, numplayers, year):
                                         info['quote'])
     bat_stats_in_yr = filter_by_year(bat_stats_, year, info['yearid'])
     top_players = top_player_ids(info, bat_stats_in_yr, formula, numplayers)
-    return top_players
+    top_player_stats = lookup_player_names(info, top_players)
+    return top_player_stats
 
 
 ##
@@ -211,6 +210,17 @@ def aggregate_by_player_id(statistics, playerid, fields):
       are dictionaries of aggregated stats.  Only the fields from the fields
       input will be aggregated in the aggregated stats dictionaries.
     """
+    row = {}
+    flds = {}
+    for player in statistics:
+        # find player
+        if player['playerID'] == playerid:
+            for fld in fields:
+                # add field values
+                if fld in player.keys():
+                    flds[fld] = player[fld]
+            row[playerid] = flds
+            print(row)
     return {}
 
 
@@ -331,18 +341,34 @@ def print_table(lst):
 # Get list of batting stats in the form of a list of dictionaries.
 bat_stats = read_csv_as_list_dict("baseballdatabank-2017.1/isp_baseball_files_small/batting2.csv", ",", '"')
 #bat_stats = read_csv_as_list_dict("baseballdatabank-2017.1/core/Batting_2016.csv", ",", '"')
-bat_stats_by_yr = filter_by_year(bat_stats, 2007, "yearID")
-print_table(bat_stats_by_yr)
+
+print("----- filter_by_year -----")
+print('bat_stats_by_yr = filter_by_year(bat_stats, 2007, "yearID")')
+bat_stats_by_yr = filter_by_year(bat_stats, 2006, "yearID")
+for rw in bat_stats_by_yr:
+    print(rw)
 
 #~ #def top_player_ids(info, statistics, formula, numplayers):
+print("----- top_player_ids -----")
+print("my_top_players = top_player_ids(baseballdatainfo, bat_stats_by_yr, batting_average, 10)")
 my_top_players = top_player_ids(baseballdatainfo, bat_stats_by_yr, batting_average, 10)
 for rw in my_top_players:
     print(rw)
 
 #def lookup_player_names(info, top_ids_and_stats):
+print("----- lookup_player_names -----")
+print("my_lookup_players = lookup_player_names(baseballdatainfo, my_top_players)")
 my_lookup_players = lookup_player_names(baseballdatainfo, my_top_players)
 for mlp in my_lookup_players:
     print(mlp)
 
 #def compute_top_stats_year(info, formula, numplayers, year):
-compute_top_stats_year(baseballdatainfo, batting_average, 10, 2007)
+print("----- compute_top_stats_year -----")
+print("top_player_stats = compute_top_stats_year(baseballdatainfo, batting_average, 10, 2007)")
+top_player_stats = compute_top_stats_year(baseballdatainfo, batting_average, 10, 2006)
+for rw in top_player_stats:
+    print(rw)
+
+
+#def aggregate_by_player_id(statistics, playerid, fields):
+aggregate_by_player_id(bat_stats_by_yr, 'berkmla01', ['BB','2B','SB'])
