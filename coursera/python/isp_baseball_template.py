@@ -160,7 +160,7 @@ def lookup_player_names(info, top_ids_and_stats):
       corresponding to the player ID in the input.
     """
     master_list = read_csv_as_nested_dict(info['masterfile'],
-                                            'playerID',
+                                            info['playerid'],
                                             info['separator'],
                                             info['quote'])
 
@@ -210,19 +210,36 @@ def aggregate_by_player_id(statistics, playerid, fields):
       are dictionaries of aggregated stats.  Only the fields from the fields
       input will be aggregated in the aggregated stats dictionaries.
     """
-    row = {}
-    flds = {}
+    # build an empty dict with just the playerid
+    player_stats = {}
     for player in statistics:
-        # find player
-        if player['playerID'] == playerid:
-            for fld in fields:
-                # add field values
-                if fld in player.keys():
-                    flds[fld] = player[fld]
-            row[playerid] = flds
-            print(row)
-    return {}
+        player_stats[player[playerid]] = {}
 
+    # collect stats by looping through them for playerid
+    for player_id in player_stats.keys():
+        flds = []
+        for player in statistics:
+            if player[playerid] == player_id:
+                # build list of stats for each field for playerid
+                for stat in fields:
+                    if stat in player.keys():
+                        flds.append([stat, int(player[stat])])
+        player_stats[player_id] = flds
+
+    # sum up the values for each stat for each player
+    for p_id, p_stats in player_stats.items():
+        fld_list = {}
+        f_values = []
+        for f in fields:
+            f_values = []
+            for pair in p_stats:
+                if f == pair[0]:
+                    f_values.append(pair[1])
+                    fld_list[pair[0]] = sum(f_values)
+                    fld_list[playerid] = p_id
+                    player_stats[p_id] =  fld_list
+
+    return player_stats
 
 def compute_top_stats_career(info, formula, numplayers):
     """
@@ -232,6 +249,10 @@ def compute_top_stats_career(info, formula, numplayers):
                     batting statistics dictionary as input and
                     computes a compound statistic
       numplayers  - Number of top players to return
+    Output:
+      Returns a nested dictionary whose keys are player IDs and whose values
+      are dictionaries of aggregated stats.  Only the fields from the fields
+      input will be aggregated in the aggregated stats dictionaries.
     """
     return []
 
@@ -352,15 +373,13 @@ for rw in bat_stats_by_yr:
 print("----- top_player_ids -----")
 print("my_top_players = top_player_ids(baseballdatainfo, bat_stats_by_yr, batting_average, 10)")
 my_top_players = top_player_ids(baseballdatainfo, bat_stats_by_yr, batting_average, 10)
-for rw in my_top_players:
-    print(rw)
+print(my_top_players)
 
 #def lookup_player_names(info, top_ids_and_stats):
 print("----- lookup_player_names -----")
 print("my_lookup_players = lookup_player_names(baseballdatainfo, my_top_players)")
 my_lookup_players = lookup_player_names(baseballdatainfo, my_top_players)
-for mlp in my_lookup_players:
-    print(mlp)
+print(my_lookup_players)
 
 #def compute_top_stats_year(info, formula, numplayers, year):
 print("----- compute_top_stats_year -----")
@@ -371,4 +390,19 @@ for rw in top_player_stats:
 
 
 #def aggregate_by_player_id(statistics, playerid, fields):
-aggregate_by_player_id(bat_stats_by_yr, 'berkmla01', ['BB','2B','SB'])
+aggregate_by_player = aggregate_by_player_id(
+[{'stat3': '5', 'stat1': '3', 'player': '1', 'stat2': '4'},
+{'stat3': '8', 'stat1': '2', 'player': '1', 'stat2': '1'},
+{'stat3': '4', 'stat1': '5', 'player': '1', 'stat2': '7'}],
+'player', ['stat1', 'stat2'])
+#~ expected
+#~ {'1': {'player': '1', 'stat1': 3, 'stat3': 5},
+#~ '2': {'player': '2', 'stat1': 1, 'stat3': 3},
+#~ '3': {'player': '3', 'stat1': 4, 'stat3': 6}}
+
+{'1': {'stat1': 3, 'stat3': 5, 'player': '1'},
+'2': {'stat1': 1, 'stat3': 3, 'player': '2'},
+'3': {'stat1': 4, 'stat3': 6, 'player': '3'}}
+
+#aggregate_by_player = aggregate_by_player_id(bat_stats, 'playerID', ['SH','SF','GIDP'])
+print(aggregate_by_player)
