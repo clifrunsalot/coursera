@@ -216,7 +216,7 @@ def aggregate_by_player_id(statistics, playerid, fields):
         player_stats[player[playerid]] = {}
 
     # collect stats by looping through them for playerid
-    for player_id in player_stats.keys():
+    for player_id, dummy in player_stats.items():
         flds = []
         for player in statistics:
             if player[playerid] == player_id:
@@ -230,10 +230,10 @@ def aggregate_by_player_id(statistics, playerid, fields):
     for p_id, p_stats in player_stats.items():
         fld_list = {}
         f_values = []
-        for f in fields:
+        for field in fields:
             f_values = []
             for pair in p_stats:
-                if f == pair[0]:
+                if field == pair[0]:
                     f_values.append(pair[1])
                     fld_list[pair[0]] = sum(f_values)
                     fld_list[playerid] = p_id
@@ -250,11 +250,20 @@ def compute_top_stats_career(info, formula, numplayers):
                     computes a compound statistic
       numplayers  - Number of top players to return
     Output:
-      Returns a nested dictionary whose keys are player IDs and whose values
-      are dictionaries of aggregated stats.  Only the fields from the fields
-      input will be aggregated in the aggregated stats dictionaries.
+    Returns a list of strings of the same form as returned
+    by lookup_player_names that correspond to the numplayers players
+    with the highest compound statistic computed by formula for their
+    careers.
     """
-    return []
+    bat_stats = read_csv_as_list_dict(info['battingfile'],
+                                        info['separator'],
+                                        info['quote'])
+
+    stat_aggregate = aggregate_by_player_id(bat_stats, info['playerid'], info['battingfields'])
+    stats = list(stat_aggregate.values())
+    top_players = top_player_ids(info, stats, formula, numplayers)
+    top_player_stats = lookup_player_names(info, top_players)
+    return top_player_stats
 
 
 ##
@@ -390,19 +399,11 @@ for rw in top_player_stats:
 
 
 #def aggregate_by_player_id(statistics, playerid, fields):
+print("----- aggregate_by_player_id -----")
+print("aggregate_by_player = aggregate_by_player_id(statistics, playerid, fields)")
 aggregate_by_player = aggregate_by_player_id(
 [{'stat3': '5', 'stat1': '3', 'player': '1', 'stat2': '4'},
 {'stat3': '8', 'stat1': '2', 'player': '1', 'stat2': '1'},
 {'stat3': '4', 'stat1': '5', 'player': '1', 'stat2': '7'}],
 'player', ['stat1', 'stat2'])
-#~ expected
-#~ {'1': {'player': '1', 'stat1': 3, 'stat3': 5},
-#~ '2': {'player': '2', 'stat1': 1, 'stat3': 3},
-#~ '3': {'player': '3', 'stat1': 4, 'stat3': 6}}
-
-{'1': {'stat1': 3, 'stat3': 5, 'player': '1'},
-'2': {'stat1': 1, 'stat3': 3, 'player': '2'},
-'3': {'stat1': 4, 'stat3': 6, 'player': '3'}}
-
-#aggregate_by_player = aggregate_by_player_id(bat_stats, 'playerID', ['SH','SF','GIDP'])
 print(aggregate_by_player)
