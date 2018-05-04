@@ -265,29 +265,29 @@ number = 2
 print(str(number) + " is even: " + str(is_even(number)))
 
 def is_lunchtime(hr, is_morning):
-	"""
-	Returns True if hr is either 11am to 12pm.
     """
-	if is_morning and hr == 11:
-		return True
-	elif not is_morning and hr == 12:
-		return True
-	else:
-		return False
+    Returns True if hr is either 11am to 12pm.
+    """
+    if is_morning and hr == 11:
+        return True
+    elif not is_morning and hr == 12:
+        return True
+    else:
+        return False
 
 def is_lunchtime_test(hour, is_am):
-	"""
-	Tests the is_lunchtime function.
-	"""
-	print(hour, end = "")
-	if is_am:
-		print("AM", end = "")
-	else:
-		print("PM", end = "")
-	if is_lunchtime(hour, is_am):
-		print(" is lunchtime.")
-	else:
-		print(" is not lunchtime.")
+    """
+    Tests the is_lunchtime function.
+    """
+    print(hour, end = "")
+    if is_am:
+        print("AM", end = "")
+    else:
+        print("PM", end = "")
+    if is_lunchtime(hour, is_am):
+        print(" is lunchtime.")
+    else:
+        print(" is not lunchtime.")
 
 add_break_and_title("Check if hour is lunchtime")
 is_lunchtime_test(11,True)
@@ -297,17 +297,17 @@ is_lunchtime_test(12,False)
 is_lunchtime_test(10, False)
 
 def is_leap_year(year):
-	"""
-	Returns True if year is a Leap Year.
-	"""
-	if year % 4 != 0:
-		return False
-	elif (year % 100) != 0:
-		return True
-	elif (year % 400) != 0:
-		return False
-	else:
-		return True
+    """
+    Returns True if year is a Leap Year.
+    """
+    if year % 4 != 0:
+        return False
+    elif (year % 100) != 0:
+        return True
+    elif (year % 400) != 0:
+        return False
+    else:
+        return True
 
 add_break_and_title("Check if year is a leap year")
 year = 2000
@@ -320,10 +320,10 @@ year = 2013
 print(str(year) + " is a leap year: " + str(is_leap_year(year)))
 
 def interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper):
-	"""
-	Return true if int1 intersects with int2
-	"""
-	return int2_lower <= int1_upper and int1_lower <= int2_upper
+    """
+    Return true if int1 intersects with int2
+    """
+    return int2_lower <= int1_upper and int1_lower <= int2_upper
 
 int1_lower, int1_upper, int2_lower, int2_upper = 0, 1, 1, 2
 print("int1(" + str(int1_lower) + "," + str(int1_upper) + ") intersects (" + str(int2_lower) + "," + str(int2_upper) + "): " + str(interval_intersect(int1_lower, int1_upper, int2_lower, int2_upper)))
@@ -366,7 +366,7 @@ print("#############")
 
 def get_discriminant(coeff_a, coeff_b, coeff_c):
     """
-	Returns the value of the discriminant.
+    Returns the value of the discriminant.
 
     (b**2) - (4*a*c)
 
@@ -380,17 +380,17 @@ def get_discriminant(coeff_a, coeff_b, coeff_c):
 add_break_and_title("get_discriminant")
 coeff_a, coeff_b, coeff_c = 1,2,3
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
-	"x + " + str(coeff_c) + " is: ")
+    "x + " + str(coeff_c) + " is: ")
 print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
 coeff_a, coeff_b, coeff_c = 2,0,-10
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
-	"x + " + str(coeff_c) + " is: ")
+    "x + " + str(coeff_c) + " is: ")
 print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
 coeff_a, coeff_b, coeff_c = 6, -3, 5
 print("The smaller root of " + str(coeff_a) + "x^2 + " + str(coeff_b) +
-	"x + " + str(coeff_c) + " is: ")
+    "x + " + str(coeff_c) + " is: ")
 print(str(get_discriminant(coeff_a, coeff_b, coeff_c)))
 
 def collatz(n):
